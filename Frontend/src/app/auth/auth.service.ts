@@ -31,7 +31,7 @@ export class AuthService {
       })
       .then(userCredential => {
         if(userCredential) {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/home2']);
         }
       })
   }
@@ -48,7 +48,7 @@ export class AuthService {
 
         this.insertUserData(userCredential)
           .then(() => {
-            this.router.navigate(['/home']);
+            this.router.navigate(['/home2']);
           });
       })
       .catch( error => {
