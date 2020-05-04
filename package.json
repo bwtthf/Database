@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/bwtthf/Database#readme",
   "dependencies": {
+    "@angular/cli": "~8.3.5",
+    "@angular/compiler-cli": "~8.2.7",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
