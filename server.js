@@ -20,46 +20,20 @@ app.use(bodyParser.json());
 var distDir = __dirname + "/public/";
 app.use(express.static(distDir));
 
-
-var knex = require('knex')({
-	client: 'pg',
-	connection: {
-		connectionString: process.env.DATABASE_URL,
-		ssl: true
-	},
-});
-
-
-
-
+app.use('/user', user);
 
 app.get('/', (req, res) => {
-    try {
-        knex.select('id')
-            .from('Employee')
-            .then(function (rows) {
-                console.log(rows);
-            })
-            .catch(function (error) {
-                console.error(error)
-            });
-        console.log("ok");
-    } catch (error) {
-        console.log(`Error seeding data: ${error}`);
-    }
-    finally {
-        console.log("entering and leaving the finally block");
-    }
-    // console.log(results);
-    res.send({
-        name: process.env.DB_NAME,
-        host: process.env.DB_HOST,
-        user: process.env.DB_USER,
-        pass: process.env.DB_PASS
-    });
+    db.raw('SELECT * FROM Employee WHERE id=6;')
+        .then((results) => {
+            res.json(results.rows);
+        })
+        .catch((error) => {
+            console.error(error)
+        });
 });
 
-app.use('/user', user);
+app.get('/register', (req, res) => {});
+app.get('/login', (req, res) => {});
 
 // Start listening
 var server = app.listen(process.env.PORT || 8080, () => {
