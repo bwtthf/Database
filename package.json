@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "pushd Frontend && ng build && popd && node server.js",
+    "start": "cd Frontend && npm install && ng build && cd .. && node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
