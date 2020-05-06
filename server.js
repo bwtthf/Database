@@ -22,18 +22,22 @@ app.use(express.static(distDir));
 
 app.use('/user', user);
 
-app.get('/', (req, res) => {
-    db.raw('SELECT * FROM Employee WHERE id=6;')
-        .then((results) => {
-            res.json(results.rows);
-        })
-        .catch((error) => {
-            console.error(error)
-        });
+// app.get('/', (req, res) => {
+//     db.raw('SELECT * FROM Employee WHERE id=6;')
+//         .then((results) => {
+//             res.json(results.rows);
+//         })
+//         .catch((error) => {
+//             console.error(error)
+//         });
+// });
+
+
+app.all('/*', function(req, res, next) {
+    // Just send the index.html for other files to support HTML5Mode
+    res.sendFile('index.html', { root: distDir });
 });
 
-app.get('/register', (req, res) => {});
-app.get('/login', (req, res) => {});
 
 // Start listening
 var server = app.listen(process.env.PORT || 8080, () => {
