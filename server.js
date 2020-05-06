@@ -22,14 +22,16 @@ app.use(express.static(distDir));
 
 app.use('/user', user);
 
+// Test b use only
+// db.raw('SELECT * FROM Employee;')
+//     .then((results) => {
+//         console.log(results.rows);
+//     })
+//     .catch((error) => {
+//         console.error(error)
+//     });
+
 // app.get('/', (req, res) => {
-//     db.raw('SELECT * FROM Employee WHERE id=6;')
-//         .then((results) => {
-//             res.json(results.rows);
-//         })
-//         .catch((error) => {
-//             console.error(error)
-//         });
 // });
 
 
