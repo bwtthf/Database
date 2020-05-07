@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth/auth.service';
-import { Router } from '@angular/router';
+// import { AuthService } from '../auth/auth.service';
+// import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,27 +9,29 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  user: firebase.User;
+  // user: firebase.User;
 
-  constructor(private auth: AuthService, 
-    private router: Router) { }
+  constructor(
+    // private auth: AuthService,
+    // private router: Router
+  ) { }
 
   ngOnInit() {
-    this.auth.getUserState()
-      .subscribe( user => {
-        this.user = user;
-      })
+    // this.auth.getUserState()
+    //   .subscribe( user => {
+    //     this.user = user;
+    //   })
   }
 
-  login() {
-    this.router.navigate(['/login']);
-  }
+  // login() {
+  //   this.router.navigate(['/login']);
+  // }
 
-  logout() {
-    this.auth.logout();
-  }
+  // logout() {
+  //   this.auth.logout();
+  // }
 
-  register() {
-    this.router.navigate(['/register']);
-  }
+  // register() {
+  //   this.router.navigate(['/register']);
+  // }
 }

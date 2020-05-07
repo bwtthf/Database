@@ -4,7 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { RegistrationComponent } from './auth/registration/registration.component';
 import { HomeComponent } from './home/home.component';
-import { Home2Component } from './components/home2/home2.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+// import { Home2Component } from './components/home2/home2.component';
 
 import { NonPerishablesComponent } from './inventory/non-perishables/non-perishables.component';
 import { PerishablesComponent } from './inventory/perishables/perishables.component';
@@ -23,8 +24,8 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'home2',
-    component: Home2Component
+    path: 'dashboard',
+    component: DashboardComponent
   },
   {
     path: 'inventory_np',

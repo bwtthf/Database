@@ -12,9 +12,11 @@ import { environment } from 'src/environments/environment';
 import { RegistrationComponent } from './auth/registration/registration.component';
 import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
-import { Home2Component } from 'src/app/components/home2/home2.component';
+// import { Home2Component } from 'src/app/components/home2/home2.component';
 import { NonPerishablesComponent } from './inventory/non-perishables/non-perishables.component';
-import { PerishablesComponent } from './inventory/perishables/perishables.component'
+import { PerishablesComponent } from './inventory/perishables/perishables.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { DashboardComponent } from './dashboard/dashboard.component'
 
 @NgModule({
   declarations: [
@@ -22,9 +24,11 @@ import { PerishablesComponent } from './inventory/perishables/perishables.compon
     RegistrationComponent,
     LoginComponent,
     HomeComponent,
-    Home2Component,
+    // Home2Component,
     NonPerishablesComponent,
-    PerishablesComponent
+    PerishablesComponent,
+    NavbarComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

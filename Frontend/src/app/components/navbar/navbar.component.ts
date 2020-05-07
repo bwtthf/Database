@@ -3,25 +3,34 @@ import { AuthService } from '../../auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-home2',
-  templateUrl: './home2.component.html',
-  styleUrls: ['./home2.component.scss']
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.scss']
 })
-export class Home2Component implements OnInit {
+export class NavbarComponent implements OnInit {
 
   user: firebase.User;
 
-  constructor(private auth: AuthService, 
+  constructor(private auth: AuthService,
     private router: Router) { }
 
   ngOnInit() {
     this.auth.getUserState()
-      .subscribe( user => {
+      .subscribe(user => {
         this.user = user;
       })
+  }
+
+  login() {
+    this.router.navigate(['/login']);
   }
 
   logout() {
     this.auth.logout();
   }
+
+  register() {
+    this.router.navigate(['/register']);
+  }
+  
 }

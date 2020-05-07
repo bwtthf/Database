@@ -8,6 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
 
   private eventAuthError = new BehaviorSubject<string>("");
@@ -18,7 +19,21 @@ export class AuthService {
   constructor(
     private afAuth: AngularFireAuth,
     private db: AngularFirestore,
-    private router: Router) { }
+    private router: Router
+  ) {
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        this.newUser = user;
+        localStorage.setItem('user', JSON.stringify(this.newUser));
+        // console.log(this.newUser);
+        JSON.parse(localStorage.getItem('user'));
+      } else {
+        // console.log(this.newUser);
+        localStorage.setItem('user', null);
+        JSON.parse(localStorage.getItem('user'));
+      }
+    })
+  }
 
   getUserState() {
     return this.afAuth.authState;
@@ -26,29 +41,25 @@ export class AuthService {
 
   login(email: string, password: string) {
     this.afAuth.signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        if (userCredential) {
+          this.router.navigate(['/dashboard']);
+        }
+      })
       .catch(error => {
         this.eventAuthError.next(error);
-      })
-      .then(userCredential => {
-        if (userCredential) {
-          this.router.navigate(['/home2']);
-        }
       })
   }
 
   createUser(user) {
-    console.log(user);
     this.afAuth.createUserWithEmailAndPassword(user.email, user.password)
       .then(userCredential => {
-        this.newUser = user;
-        console.log(userCredential);
         userCredential.user.updateProfile({
           displayName: user.firstName + ' ' + user.lastName
         });
-
         this.insertUserData(userCredential)
           .then(() => {
-            this.router.navigate(['/home2']);
+            this.router.navigate(['/dashboard']);
           });
       })
       .catch(error => {
