@@ -2,6 +2,13 @@
 <div class="container pt-5">
     <div class="row mt-5">
         <div class="col-12">
+            <div ngbDropdown class="d-inline-block">
+                <button class="btn btn-secondary" id="dropdownBasic1" ngbDropdownToggle>Inventory</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem [routerLink]="['/inventory_np']">Non-perishable</button>
+                    <button ngbDropdownItem [routerLink]="['/inventory_p']">Perishable</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

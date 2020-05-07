@@ -5,7 +5,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 
 const db = require('./db')
-const user = require('./routes/user');
+const inventory = require('./routes/inventory');
 
 // We need to use environment variables
 // This setup dotenv with the configuration file
@@ -20,9 +20,9 @@ app.use(bodyParser.json());
 var distDir = __dirname + "/public/";
 app.use(express.static(distDir));
 
-app.use('/user', user);
+app.use('/inventory', inventory);
 
-// Test b use only
+// Test database connection use only
 // db.raw('SELECT * FROM Employee;')
 //     .then((results) => {
 //         console.log(results.rows);

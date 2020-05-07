@@ -6,7 +6,9 @@
 <!-- <button class="btn btn-primary" *ngIf="!user" (click)="login()">Login</button> -->
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="/">Heidelberg</a>
+    <div *ngIf="!user; then go_home else go_dashboard"></div>
+    <ng-template #go_home><a class="navbar-brand" href="/">Heidelberg</a></ng-template>
+    <ng-template #go_dashboard><a class="navbar-brand" href="/dashboard">Heidelberg</a></ng-template>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
         aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
