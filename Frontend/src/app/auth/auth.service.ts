@@ -24,13 +24,13 @@ export class AuthService {
     return this.afAuth.authState;
   }
 
-  login( email: string, password: string) {
+  login(email: string, password: string) {
     this.afAuth.signInWithEmailAndPassword(email, password)
       .catch(error => {
         this.eventAuthError.next(error);
       })
       .then(userCredential => {
-        if(userCredential) {
+        if (userCredential) {
           this.router.navigate(['/home2']);
         }
       })
@@ -38,11 +38,11 @@ export class AuthService {
 
   createUser(user) {
     console.log(user);
-    this.afAuth.createUserWithEmailAndPassword( user.email, user.password)
-      .then( userCredential => {
+    this.afAuth.createUserWithEmailAndPassword(user.email, user.password)
+      .then(userCredential => {
         this.newUser = user;
         console.log(userCredential);
-        userCredential.user.updateProfile( {
+        userCredential.user.updateProfile({
           displayName: user.firstName + ' ' + user.lastName
         });
 
@@ -51,7 +51,7 @@ export class AuthService {
             this.router.navigate(['/home2']);
           });
       })
-      .catch( error => {
+      .catch(error => {
         this.eventAuthError.next(error);
       });
   }
