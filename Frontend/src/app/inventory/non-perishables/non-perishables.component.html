@@ -1,5 +1,6 @@
 <app-navbar></app-navbar>
 <div class="container pt-5">
+
     <div class="row mt-5">
         <div class="col-9">
             <h2>Non-perishable Iems</h2>
@@ -8,5 +9,30 @@
             <button class="btn btn-secondary">Add</button>
         </div>
     </div>
-</div>
 
+    <div class="row mt-5">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Item</th>
+                    <th scope="col">Total Price</th>
+                    <th scope="col">Date Ordered</th>
+                    <th scope="col">Date Received</th>
+                    <th scope="col">Condition</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let nonPerishablesItem of nonPerishablesItems; index as i">
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>{{ nonPerishablesItem.item }}</td>
+                    <td>{{ nonPerishablesItem.total_price }}</td>
+                    <td>{{ nonPerishablesItem.date_ordered }}</td>
+                    <td>{{ nonPerishablesItem.date_received }}</td>
+                    <td>{{ nonPerishablesItem.condition }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

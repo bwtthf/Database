@@ -2,13 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
-import {NgbPaginationModule, NgbDropdownModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbPaginationModule, NgbDropdownModule, NgbAlertModule
+} from '@ng-bootstrap/ng-bootstrap';
 
 import { environment } from '../environments/environment';
 
@@ -37,6 +40,7 @@ import { PerishablesComponent } from './inventory/perishables/perishables.compon
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     AppRoutingModule,
     AngularFireModule.initializeApp( environment.firebase),
     AngularFireAuthModule,
