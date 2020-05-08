@@ -16,7 +16,14 @@ router.get('/non_perishable', (req, res, next) => {
 });
 
 router.get('/getAllNonPerishable', (req, res, next) => {
-    db.raw('SELECT * FROM Inventory I LEFT JOIN Non_perishables Np ON I.item_id=Np.item_id;')
+
+    sql_str = "SELECT I.item_id, I.total_price, \
+                to_char(I.date_ordered, 'YYYY-MM-DD') AS date_ordered, \
+                to_char(I.date_received, 'YYYY-MM-DD') AS date_received, \
+                Np.item, Np.condition \
+                FROM Inventory I LEFT JOIN Non_perishables Np ON I.item_id=Np.item_id;"
+
+    db.raw(sql_str)
         .then((results) => {
             // console.log(results.rows);
             res.json(results.rows);

@@ -10,7 +10,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import {
-  NgbPaginationModule, NgbDropdownModule, NgbAlertModule
+  NgbPaginationModule, NgbDropdownModule, NgbAlertModule, NgbModalModule, NgbDatepickerModule
 } from '@ng-bootstrap/ng-bootstrap';
 
 import { environment } from '../environments/environment';
@@ -22,7 +22,8 @@ import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component'
 import { NonPerishablesComponent } from './inventory/non-perishables/non-perishables.component';
 import { PerishablesComponent } from './inventory/perishables/perishables.component';
-
+import { PerishablesModalComponent } from './inventory/components/perishables-modal/perishables-modal.component';
+import { NonPerishablesModalComponent } from './inventory/components/non-perishables-modal/non-perishables-modal.component';
 
 
 @NgModule({
@@ -34,7 +35,9 @@ import { PerishablesComponent } from './inventory/perishables/perishables.compon
     HomeComponent,
     DashboardComponent,
     NonPerishablesComponent,
-    PerishablesComponent
+    PerishablesComponent,
+    PerishablesModalComponent,
+    NonPerishablesModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,10 +50,13 @@ import { PerishablesComponent } from './inventory/perishables/perishables.compon
     AngularFirestoreModule,
     NgbPaginationModule, 
     NgbDropdownModule, 
-    NgbAlertModule
+    NgbAlertModule,
+    NgbModalModule,
+    NgbDatepickerModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ NonPerishablesModalComponent ]
 })
 
 export class AppModule { }
