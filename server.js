@@ -6,6 +6,7 @@ const dotenv = require('dotenv');
 
 const db = require('./db')
 const inventory = require('./routes/inventory');
+const inventory = require('./routes/employee');
 
 // We need to use environment variables
 // This setup dotenv with the configuration file
@@ -21,6 +22,7 @@ var distDir = __dirname + "/public/";
 app.use(express.static(distDir));
 
 app.use('/inventory', inventory);
+app.use('/employee', inventory);
 
 // Test database connection use only
 // db.raw('SELECT * FROM Employee;')
