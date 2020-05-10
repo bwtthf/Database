@@ -6,6 +6,8 @@ import { RegistrationComponent } from './auth/registration/registration.componen
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 // import { Home2Component } from './components/home2/home2.component';
+import { EmployeeHomeComponent } from './employee/employee-home/employee-home.component'
+import { ShiftMonthComponent } from './employee/shift-month/shift-month.component'
 
 import { NonPerishablesComponent } from './inventory/non-perishables/non-perishables.component';
 import { PerishablesComponent } from './inventory/perishables/perishables.component';
@@ -35,7 +37,14 @@ const routes: Routes = [
     path: 'inventory_p',
     component: PerishablesComponent
   },
-
+  {
+    path: 'employee',
+    component: EmployeeHomeComponent
+  },
+  {
+    path: 'shiftmonth',
+    component: ShiftMonthComponent
+  },
   {
     path: '',
     redirectTo: '/home',
