@@ -31,9 +31,9 @@ router.post('/postOneNonPerishableItem', (req, res, next) => {
         sql_str = "INSERT INTO Inventory(total_price, date_ordered, date_received) VALUES (?, ?, ?)"
 
         item = req.body.item;
-        condition = req.body.condition;
-        date_ordered = req.body.date_ordered.year + '-' + req.body.date_ordered.month + '-' + req.body.date_ordered.day;
-        date_received = req.body.date_received.year + '-' + req.body.date_received.month + '-' + req.body.date_received.day;
+        condition = (req.body.condition) ? req.body.condition : null;
+        date_ordered = (req.body.date_ordered) ? req.body.date_ordered.year + '-' + req.body.date_ordered.month + '-' + req.body.date_ordered.day : null;
+        date_received = (req.body.date_received) ? req.body.date_received.year + '-' + req.body.date_received.month + '-' + req.body.date_received.day : null;
         
         db.raw(sql_str, [req.body.total_price, date_ordered, date_received])
             .then((results) => {
@@ -106,10 +106,10 @@ router.post('/updateOneNonPerishableItem', (req, res, next) => {
     // console.log(req);
     item_id = req.body.item_id;
     total_price = req.body.total_price;
-    date_ordered = req.body.date_ordered;
-    date_received = req.body.date_received;
+    date_ordered = (req.body.date_ordered) ? req.body.date_ordered.year + '-' + req.body.date_ordered.month + '-' + req.body.date_ordered.day : null;
+    date_received = (req.body.date_received) ? req.body.date_received.year + '-' + req.body.date_received.month + '-' + req.body.date_received.day : null;
     item = req.body.item;
-    condition = req.body.condition;
+    condition = (req.body.condition) ? req.body.condition : null;
 
     sql_str_1 = "UPDATE Non_perishables \
                     SET item = ?, condition = ? \

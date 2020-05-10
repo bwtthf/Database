@@ -15,14 +15,7 @@ export class NonPerishablesComponent implements OnInit {
 
   user: firebase.User;
 
-  nonPerishablesItem = {
-    "item_id": '',
-    "total_price": '',
-    "date_ordered": '',
-    "date_received": '',
-    "item": '',
-    "condition": ''
-  };
+  nonPerishablesItem: any;
 
   nonPerishablesItems = [];
 
@@ -49,6 +42,15 @@ export class NonPerishablesComponent implements OnInit {
   }
 
   addRow() {
+    this.nonPerishablesItem = {
+      "item_id": '',
+      "total_price": '',
+      "date_ordered": '',
+      "date_received": '',
+      "item": '',
+      "condition": ''
+    };
+
     const modalRef = this.modalService.open(NonPerishablesModalComponent);
     modalRef.componentInstance.nonPerishablesItem = this.nonPerishablesItem;
     modalRef.result.then((result) => {
@@ -64,7 +66,6 @@ export class NonPerishablesComponent implements OnInit {
             this.nonPerishablesItem.item = '';
             this.nonPerishablesItem.condition = '';
 
-            // console.log(this.nonPerishablesItem);
             this.nonPerishablesService.getAllNonPerishableItems().subscribe((data: any[]) => {
               // console.log(data);
               this.nonPerishablesItems = data;
@@ -77,15 +78,38 @@ export class NonPerishablesComponent implements OnInit {
   }
 
   editRow(item_id: any) {
-    this.nonPerishablesItem.item_id = item_id;
-    // console.log(this.nonPerishablesItem);
+    this.nonPerishablesItem = {
+      "item_id": item_id,
+      "total_price": '',
+      "date_ordered": '',
+      "date_received": '',
+      "item": '',
+      "condition": ''
+    };
 
     this.nonPerishablesService.getOneNonPerishableItem(this.nonPerishablesItem).subscribe((data) => {
 
       this.nonPerishablesItem.item_id = data[0].item_id;
       this.nonPerishablesItem.total_price = data[0].total_price;
-      this.nonPerishablesItem.date_ordered = data[0].date_ordered;
-      this.nonPerishablesItem.date_received = data[0].date_received;
+      if(data[0].date_ordered){
+        this.nonPerishablesItem.date_ordered = {
+          "year": parseInt(data[0].date_ordered.split('-')[0]),
+          "month": parseInt(data[0].date_ordered.split('-')[1]),
+          "day": parseInt(data[0].date_ordered.split('-')[2]),
+        };
+      } else{
+        this.nonPerishablesItem.date_ordered = ''
+      }
+      if(data[0].date_received){
+        this.nonPerishablesItem.date_received = {
+          "year": parseInt(data[0].date_received.split('-')[0]),
+          "month": parseInt(data[0].date_received.split('-')[1]),
+          "day": parseInt(data[0].date_received.split('-')[2]),
+        };
+      } else{
+        this.nonPerishablesItem.date_received = ''
+      }
+      
       this.nonPerishablesItem.item = data[0].item;
       this.nonPerishablesItem.condition = data[0].condition;
 
@@ -124,8 +148,14 @@ export class NonPerishablesComponent implements OnInit {
   }
 
   deleteRow(item_id: any) {
-    this.nonPerishablesItem.item_id = item_id;
-    // console.log(this.nonPerishablesItem);
+    this.nonPerishablesItem = {
+      "item_id": item_id,
+      "total_price": '',
+      "date_ordered": '',
+      "date_received": '',
+      "item": '',
+      "condition": ''
+    };
 
     this.nonPerishablesService.deleteOneNonPerishableItem(this.nonPerishablesItem).subscribe((data) => {
 
@@ -136,9 +166,7 @@ export class NonPerishablesComponent implements OnInit {
       this.nonPerishablesItem.item = '';
       this.nonPerishablesItem.condition = '';
 
-      // console.log(this.nonPerishablesItem);
       this.nonPerishablesService.getAllNonPerishableItems().subscribe((data: any[]) => {
-        // console.log(data);
         this.nonPerishablesItems = data;
       })
     });
