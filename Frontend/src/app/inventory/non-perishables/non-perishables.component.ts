@@ -42,7 +42,7 @@ export class NonPerishablesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.nonPerishablesService.sendGetRequest().subscribe((data: any[]) => {
+    this.nonPerishablesService.getAllNonPerishable().subscribe((data: any[]) => {
       // console.log(data);
       this.nonPerishablesItems = data;
     })
@@ -54,6 +54,14 @@ export class NonPerishablesComponent implements OnInit {
     modalRef.result.then((result) => {
       if (result) {
         console.log(result);
+        this.nonPerishablesService.postOneNonPerishableItem(this.nonPerishablesItem)
+          .subscribe((data) => {
+            // console.log(data);
+            this.nonPerishablesService.getAllNonPerishable().subscribe((data: any[]) => {
+              // console.log(data);
+              this.nonPerishablesItems = data;
+            })
+          });
       }
     }, (reason) => {
 

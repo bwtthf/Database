@@ -12,10 +12,14 @@ export class NonPerishablesService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public sendGetRequest() {
+  public getAllNonPerishable() {
     // return this.httpClient.get('/inventory/getAllNonPerishable');
     // return this.httpClient.get(this.REST_API_SERVER + '/inventory/getAllNonPerishable');
     return this.httpClient.get(environment.apiUrl + '/inventory/getAllNonPerishable');
+  }
+
+  public postOneNonPerishableItem(nonPerishablesItem) {
+    return this.httpClient.post(environment.apiUrl + '/inventory/postOneNonPerishableItem', nonPerishablesItem);
   }
 
 }
