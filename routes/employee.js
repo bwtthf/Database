@@ -39,4 +39,16 @@ router.get('/shiftmonth/:id', (req, res, next) => {
         });
 });
 
+router.get('/employeearchive', (req, res, next) => {
+    sql_str = "SELECT S.id, S.name FROM Employee_archive S"
+    db.raw(sql_str)
+        .then((results) => {
+            // console.log(results.rows);
+            res.json(results.rows);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+});
+
 module.exports = router;
