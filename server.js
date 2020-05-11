@@ -7,6 +7,7 @@ const dotenv = require('dotenv');
 const db = require('./db')
 const inventory_non_perishables = require('./routes/inventory_non_perishables');
 const inventory_perishables = require('./routes/inventory_perishables');
+const inventory = require('./routes/employee');
 
 // We need to use environment variables
 // This setup dotenv with the configuration file
@@ -23,6 +24,7 @@ app.use(express.static(distDir));
 
 app.use('/inventory_non_perishables', inventory_non_perishables);
 app.use('/inventory_perishables', inventory_perishables);
+app.use('/employee', inventory);
 
 // Test database connection use only
 // db.raw('SELECT * FROM Employee;')

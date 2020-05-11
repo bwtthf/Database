@@ -24,6 +24,8 @@ import { NonPerishablesComponent } from './inventory/non-perishables/non-perisha
 import { PerishablesComponent } from './inventory/perishables/perishables.component';
 import { PerishablesModalComponent } from './inventory/components/perishables-modal/perishables-modal.component';
 import { NonPerishablesModalComponent } from './inventory/components/non-perishables-modal/non-perishables-modal.component';
+import { ShiftMonthComponent } from './employee/shift-month/shift-month.component';
+// import { EmployeeHomeComponent } from './employee/employee-home/employee-home.component';
 
 
 @NgModule({
@@ -38,6 +40,8 @@ import { NonPerishablesModalComponent } from './inventory/components/non-perisha
     PerishablesComponent,
     PerishablesModalComponent,
     NonPerishablesModalComponent,
+    ShiftMonthComponent,
+    // EmployeeHomeComponent,
   ],
   imports: [
     BrowserModule,
