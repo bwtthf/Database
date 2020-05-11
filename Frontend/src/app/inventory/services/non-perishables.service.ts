@@ -47,7 +47,7 @@ export class NonPerishablesService {
   }
 
   public queryNonPerishableItems(nonPerishablesQueryInfo){
-    return this.httpClient.post(environment.apiUrl + '/inventory_non_perishables/sendAdvanceQueryRequest', nonPerishablesQueryInfo)
+    return this.httpClient.post(environment.apiUrl + '/inventory_non_perishables/queryNonPerishableItems', nonPerishablesQueryInfo)
   }
 
 }

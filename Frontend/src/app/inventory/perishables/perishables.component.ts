@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbPanelChangeEvent, NgbAccordion } from '@ng-bootstrap/ng-bootstrap';
 
 import { AuthService } from '../../auth/auth.service';
 import { PerishablesService } from '../services/perishables.service';
+
 import { PerishablesModalComponent } from '../components/perishables-modal/perishables-modal.component';
 
 @Component({
@@ -13,7 +14,12 @@ import { PerishablesModalComponent } from '../components/perishables-modal/peris
 })
 export class PerishablesComponent implements OnInit {
 
+  @ViewChild('perishables_accordion', { static: true }) accordion: NgbAccordion;
+
   user: firebase.User;
+
+  panelID: any;
+  panelEventNextState: any;
 
   perishablesItem: any;
 
@@ -31,7 +37,13 @@ export class PerishablesComponent implements OnInit {
         if (this.user === undefined || this.user === null) {
           this.router.navigate(['/login']);
         }
-      })
+      });
+      this.perishablesService.sendAdvanceQueryRequest$.subscribe((data) => {
+        if (this.panelEventNextState === true) {
+          this.accordion.toggle(this.panelID);
+        }
+        this.perishablesItems = data;
+      });
   }
 
   ngOnInit() {
@@ -42,6 +54,10 @@ export class PerishablesComponent implements OnInit {
   }
 
   addRow() {
+    if (this.panelEventNextState === true) {
+      this.accordion.toggle(this.panelID);
+    }
+
     this.perishablesItem = {
       "item_id": '',
       "total_price": '',
@@ -82,6 +98,10 @@ export class PerishablesComponent implements OnInit {
   }
 
   editRow(item_id: any) {
+    if (this.panelEventNextState === true) {
+      this.accordion.toggle(this.panelID);
+    }
+
     this.perishablesItem = {
       "item_id": item_id,
       "total_price": '',
@@ -165,6 +185,10 @@ export class PerishablesComponent implements OnInit {
   }
 
   deleteRow(item_id: any) {
+    if (this.panelEventNextState === true) {
+      this.accordion.toggle(this.panelID);
+    }
+
     this.perishablesItem = {
       "item_id": item_id,
       "total_price": '',
@@ -189,6 +213,12 @@ export class PerishablesComponent implements OnInit {
         this.perishablesItems = data;
       })
     });
+  }
+
+  detectPanelChange($event: NgbPanelChangeEvent) {
+    // console.log($event);
+    this.panelID = $event.panelId;
+    this.panelEventNextState = $event.nextState;
   }
 
 }
