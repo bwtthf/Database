@@ -10,7 +10,8 @@ router.get('/getAllNonPerishableItems', (req, res, next) => {
                 to_char(I.date_ordered, 'YYYY-MM-DD') AS date_ordered, \
                 to_char(I.date_received, 'YYYY-MM-DD') AS date_received, \
                 Np.item, Np.condition \
-                FROM Non_perishables Np LEFT JOIN Inventory I ON Np.item_id=I.item_id;"
+                FROM Non_perishables Np LEFT JOIN Inventory I ON Np.item_id=I.item_id \
+                ORDER BY Np.item_id DESC;"
 
     db.raw(sql_str)
         .then((results) => {
@@ -138,5 +139,77 @@ router.post('/updateOneNonPerishableItem', (req, res, next) => {
         res.json({});
     });
 });
+
+
+router.post('/sendAdvanceQueryRequest', (req, res, next) => {
+    // console.log(req.body);
+
+    if(req.body.item != '' && req.body.date_ordered_start != '' && req.body.date_ordered_stop != ''){
+        sql_str = "SELECT Np.item_id, I.total_price, \
+                    to_char(I.date_ordered, 'YYYY-MM-DD') AS date_ordered, \
+                    to_char(I.date_received, 'YYYY-MM-DD') AS date_received, \
+                    Np.item, Np.condition \
+                    FROM Non_perishables Np LEFT JOIN Inventory I ON Np.item_id=I.item_id \
+                    WHERE Np.item LIKE ? AND (date_ordered between ? AND ?) \
+                    ORDER BY Np.item_id DESC;"
+        db.raw(sql_str, ['%'+req.body.item+'%', req.body.date_ordered_start, req.body.date_ordered_stop])
+            .then((results) => {
+                // console.log(results.rows);
+                res.json(results.rows);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    } else if(req.body.date_ordered_start != '' && req.body.date_ordered_stop != ''){
+        sql_str = "SELECT Np.item_id, I.total_price, \
+                    to_char(I.date_ordered, 'YYYY-MM-DD') AS date_ordered, \
+                    to_char(I.date_received, 'YYYY-MM-DD') AS date_received, \
+                    Np.item, Np.condition \
+                    FROM Non_perishables Np LEFT JOIN Inventory I ON Np.item_id=I.item_id \
+                    WHERE date_ordered between ? AND ? \
+                    ORDER BY Np.item_id DESC;"
+        db.raw(sql_str, [req.body.date_ordered_start, req.body.date_ordered_stop])
+            .then((results) => {
+                // console.log(results.rows);
+                res.json(results.rows);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    } else if(req.body.item != ''){
+        sql_str = "SELECT Np.item_id, I.total_price, \
+                    to_char(I.date_ordered, 'YYYY-MM-DD') AS date_ordered, \
+                    to_char(I.date_received, 'YYYY-MM-DD') AS date_received, \
+                    Np.item, Np.condition \
+                    FROM Non_perishables Np LEFT JOIN Inventory I ON Np.item_id=I.item_id \
+                    WHERE Np.item LIKE ? \
+                    ORDER BY Np.item_id DESC;"
+        db.raw(sql_str, ['%'+req.body.item+'%'])
+            .then((results) => {
+                // console.log(results.rows);
+                res.json(results.rows);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }else{
+        sql_str = "SELECT Np.item_id, I.total_price, \
+                    to_char(I.date_ordered, 'YYYY-MM-DD') AS date_ordered, \
+                    to_char(I.date_received, 'YYYY-MM-DD') AS date_received, \
+                    Np.item, Np.condition \
+                    FROM Non_perishables Np LEFT JOIN Inventory I ON Np.item_id=I.item_id \
+                    ORDER BY Np.item_id DESC;"
+        db.raw(sql_str)
+            .then((results) => {
+                // console.log(results.rows);
+                res.json(results.rows);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
+});
+
 
 module.exports = router;

@@ -26,6 +26,7 @@ import { ShiftMonthComponent } from './employee/shift-month/shift-month.componen
 import { EmployeeHomeComponent } from './employee/employee-home/employee-home.component';
 import { ShiftAvailableComponent } from './employee/shift-available/shift-available.component';
 import { EmployeeArchiveComponent } from './employee/employee-archive/employee-archive.component';
+import { NonPerishablesQueryFormComponent } from './inventory/components/non-perishables-query-form/non-perishables-query-form.component';
 
 
 
@@ -45,6 +46,7 @@ import { EmployeeArchiveComponent } from './employee/employee-archive/employee-a
     EmployeeHomeComponent,
     ShiftAvailableComponent,
     EmployeeArchiveComponent,
+    NonPerishablesQueryFormComponent,
   ],
   imports: [
     BrowserModule,

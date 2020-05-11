@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable, Subject } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -8,9 +9,14 @@ import { environment } from '../../../environments/environment';
 
 export class NonPerishablesService {
 
+  sendAdvanceQueryRequest$: Observable<any>;
+  private sendAdvanceQueryRequestMethod = new Subject<any>();
+
   // private REST_API_SERVER = "http://localhost:3000";
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+    this.sendAdvanceQueryRequest$ = this.sendAdvanceQueryRequestMethod.asObservable();
+  }
 
   public getAllNonPerishableItems() {
     // return this.httpClient.get('/inventory_non_perishables/getAllNonPerishableItems');
@@ -18,7 +24,7 @@ export class NonPerishablesService {
     return this.httpClient.get(environment.apiUrl + '/inventory_non_perishables/getAllNonPerishableItems');
   }
 
-  public getOneNonPerishableItem(nonPerishablesItem){
+  public getOneNonPerishableItem(nonPerishablesItem) {
     return this.httpClient.post(environment.apiUrl + '/inventory_non_perishables/getOneNonPerishableItem', nonPerishablesItem);
   }
 
@@ -26,12 +32,22 @@ export class NonPerishablesService {
     return this.httpClient.post(environment.apiUrl + '/inventory_non_perishables/postOneNonPerishableItem', nonPerishablesItem);
   }
 
-  public deleteOneNonPerishableItem(nonPerishablesItem){
+  public deleteOneNonPerishableItem(nonPerishablesItem) {
     return this.httpClient.post(environment.apiUrl + '/inventory_non_perishables/deleteOneNonPerishableItem', nonPerishablesItem);
   }
 
-  public updateOneNonPerishableItem(nonPerishablesItem){
+  public updateOneNonPerishableItem(nonPerishablesItem) {
     return this.httpClient.post(environment.apiUrl + '/inventory_non_perishables/updateOneNonPerishableItem', nonPerishablesItem);
+  }
+
+  public sendAdvanceQueryRequest(nonPerishablesQueryInfo) {
+    this.queryNonPerishableItems(nonPerishablesQueryInfo).subscribe((data: any[]) => {
+      this.sendAdvanceQueryRequestMethod.next(data);
+    });
+  }
+
+  public queryNonPerishableItems(nonPerishablesQueryInfo){
+    return this.httpClient.post(environment.apiUrl + '/inventory_non_perishables/sendAdvanceQueryRequest', nonPerishablesQueryInfo)
   }
 
 }
