@@ -81,6 +81,8 @@ export class PerishablesComponent implements OnInit {
     });
   }
 
+  editRow(item_id: any) {}
+
   deleteRow(item_id: any) {
     this.perishablesItem = {
       "item_id": item_id,
