@@ -1,7 +1,8 @@
 <app-navbar></app-navbar>
 <div class="container pt-5">
     <div class="row mt-5">
-        <div class="col-12">
+
+        <div class="col-2 d-flex align-content-center flex-wrap">
             <div ngbDropdown class="d-inline-block">
                 <button class="btn btn-secondary" id="dropdownBasic1" ngbDropdownToggle>Inventory</button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
@@ -10,5 +11,12 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-2 d-flex align-content-center flex-wrap">
+            <div class="d-inline-block">
+                <button class="btn btn-secondary" [routerLink]="['/employee']">Employee Information</button>
+            </div>
+        </div>
+
     </div>
 </div>
