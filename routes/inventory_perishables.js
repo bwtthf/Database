@@ -12,7 +12,7 @@ router.get('/getAllPerishableItems', (req, res, next) => {
                 P.item, P.quantity, \
                 to_char(P.expiration_date, 'YYYY-MM-DD') AS expiration_date \
                 FROM Perishables P LEFT JOIN Inventory I ON P.item_id=I.item_id \
-                ORDER BY P.item_id DESC;"
+                ORDER BY date_ordered DESC;"
 
     db.raw(sql_str)
         .then((results) => {
@@ -34,7 +34,7 @@ router.post('/getOnePerishableItem', (req, res, next) => {
                 to_char(P.expiration_date, 'YYYY-MM-DD') AS expiration_date \
                 FROM Inventory I LEFT JOIN Perishables P ON I.item_id=P.item_id \
                 WHERE I.item_id=?;"
-    
+
     db.raw(sql_str, [req.body.item_id])
         .then((results) => {
             // console.log(results.rows);
@@ -49,7 +49,7 @@ router.post('/getOnePerishableItem', (req, res, next) => {
 
 router.post('/postOnePerishableItem', (req, res, next) => {
     // console.log(req);
-    if (req.body.item_id === ''){
+    if (req.body.item_id === '') {
 
         sql_str = "INSERT INTO Inventory(total_price, date_ordered, date_received) VALUES (?, ?, ?)"
 
@@ -59,7 +59,7 @@ router.post('/postOnePerishableItem', (req, res, next) => {
         date_ordered = (req.body.date_ordered) ? req.body.date_ordered.year + '-' + req.body.date_ordered.month + '-' + req.body.date_ordered.day : null;
         date_received = (req.body.date_received) ? req.body.date_received.year + '-' + req.body.date_received.month + '-' + req.body.date_received.day : null;
         expiration_date = (req.body.expiration_date) ? req.body.expiration_date.year + '-' + req.body.expiration_date.month + '-' + req.body.expiration_date.day : null;
-        
+
         db.raw(sql_str, [total_price, date_ordered, date_received])
             .then((results) => {
 
@@ -83,8 +83,8 @@ router.post('/postOnePerishableItem', (req, res, next) => {
                 console.log(error);
                 res.json({});
             });
-        
-    } else{
+
+    } else {
         res.json({});
     }
 });
@@ -144,5 +144,81 @@ router.post('/updateOnePerishableItem', (req, res, next) => {
         res.json({});
     });
 });
+
+
+router.post('/queryPerishableItems', (req, res, next) => {
+    // console.log(req.body);
+
+    if (req.body.item != '' && req.body.date_ordered_start != '' && req.body.date_ordered_stop != '') {
+        sql_str = "SELECT P.item_id, I.total_price, \
+                    to_char(I.date_ordered, 'YYYY-MM-DD') AS date_ordered, \
+                    to_char(I.date_received, 'YYYY-MM-DD') AS date_received, \
+                    P.item, P.quantity, \
+                    to_char(P.expiration_date, 'YYYY-MM-DD') AS expiration_date \
+                    FROM Perishables P LEFT JOIN Inventory I ON P.item_id=I.item_id \
+                    WHERE P.item LIKE ? AND (date_ordered between ? AND ?) \
+                    ORDER BY date_ordered DESC;"
+        db.raw(sql_str, ['%' + req.body.item + '%', req.body.date_ordered_start, req.body.date_ordered_stop])
+            .then((results) => {
+                // console.log(results.rows);
+                res.json(results.rows);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    } else if (req.body.date_ordered_start != '' && req.body.date_ordered_stop != '') {
+        sql_str = "SELECT P.item_id, I.total_price, \
+                    to_char(I.date_ordered, 'YYYY-MM-DD') AS date_ordered, \
+                    to_char(I.date_received, 'YYYY-MM-DD') AS date_received, \
+                    P.item, P.quantity, \
+                    to_char(P.expiration_date, 'YYYY-MM-DD') AS expiration_date \
+                    FROM Perishables P LEFT JOIN Inventory I ON P.item_id=I.item_id \
+                    WHERE date_ordered between ? AND ? \
+                    ORDER BY date_ordered DESC;"
+        db.raw(sql_str, [req.body.date_ordered_start, req.body.date_ordered_stop])
+            .then((results) => {
+                // console.log(results.rows);
+                res.json(results.rows);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    } else if (req.body.item != '') {
+        sql_str = "SELECT P.item_id, I.total_price, \
+                    to_char(I.date_ordered, 'YYYY-MM-DD') AS date_ordered, \
+                    to_char(I.date_received, 'YYYY-MM-DD') AS date_received, \
+                    P.item, P.quantity, \
+                    to_char(P.expiration_date, 'YYYY-MM-DD') AS expiration_date \
+                    FROM Perishables P LEFT JOIN Inventory I ON P.item_id=I.item_id \
+                    WHERE P.item LIKE ? \
+                    ORDER BY date_ordered DESC;"
+        db.raw(sql_str, ['%' + req.body.item + '%'])
+            .then((results) => {
+                // console.log(results.rows);
+                res.json(results.rows);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    } else {
+        sql_str = "SELECT P.item_id, I.total_price, \
+                    to_char(I.date_ordered, 'YYYY-MM-DD') AS date_ordered, \
+                    to_char(I.date_received, 'YYYY-MM-DD') AS date_received, \
+                    P.item, P.quantity, \
+                    to_char(P.expiration_date, 'YYYY-MM-DD') AS expiration_date \
+                    FROM Perishables P LEFT JOIN Inventory I ON P.item_id=I.item_id \
+                    ORDER BY date_ordered DESC;"
+        db.raw(sql_str)
+            .then((results) => {
+                // console.log(results.rows);
+                res.json(results.rows);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
+});
+
 
 module.exports = router;

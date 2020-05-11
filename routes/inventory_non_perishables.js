@@ -141,7 +141,7 @@ router.post('/updateOneNonPerishableItem', (req, res, next) => {
 });
 
 
-router.post('/sendAdvanceQueryRequest', (req, res, next) => {
+router.post('/queryNonPerishableItems', (req, res, next) => {
     // console.log(req.body);
 
     if(req.body.item != '' && req.body.date_ordered_start != '' && req.body.date_ordered_stop != ''){
