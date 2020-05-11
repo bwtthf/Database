@@ -10,6 +10,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 import { environment } from '../environments/environment';
 
@@ -60,6 +61,7 @@ import { PerishablesQueryFormComponent } from './inventory/components/perishable
     AngularFireAuthModule,
     AngularFirestoreModule,
     NgbModule,
+    HighchartsChartModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
