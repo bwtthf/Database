@@ -18,13 +18,14 @@ export class EmployeeArchiveComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get(environment.apiUrl + '/employee/employee1').subscribe(data => {
+    this.http.get<Ishift[]>(environment.apiUrl + '/employee/employeearchive').subscribe(data => {
+      return this.employees = data;
       console.log(data);
     });
   }
 
   seeData(id){
-    this.http.get<Ishift[]>(environment.apiUrl + '/employee/shiftmonth/' + id).subscribe(data => {
+    this.http.get<Ishift[]>(environment.apiUrl + '/employee/employeearchive').subscribe(data => {
       return this.employees = data;
       console.log(data);
     });
