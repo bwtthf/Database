@@ -1,2 +1,35 @@
 <app-navbar></app-navbar>
-<p>shift-month works!</p>
+<div class="container pt-5">
+    <div class="row mt-5">
+        <div class="col-12">
+            <div ngbDropdown class="d-inline-block">
+                <button class="btn btn-secondary" id="dropdownBasic1" ngbDropdownToggle>Employees: </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem (click)='seeData(1)'>Brent Thayer</button>
+                    <button ngbDropdownItem (click)='seeData(2)'>John Smith</button>
+                    <button ngbDropdownItem (click)='seeData(3)'>Yen On Chan</button>
+                    <button ngbDropdownItem (click)='seeData(4)'>Isaac Shee</button>
+                    <button ngbDropdownItem (click)='seeData(5)'>Songxi Chen</button>
+                    <button ngbDropdownItem (click)='seeData(6)'>Robert California</button>
+                    <button ngbDropdownItem (click)='seeData(7)'>Will Smith</button>
+                    <button ngbDropdownItem (click)='seeData(8)'>Michael Scott</button>
+                    <button ngbDropdownItem (click)='seeData(9)'>Ashely Rockledge</button>
+                    <button ngbDropdownItem (click)='seeData(10)'>Laruen Merlotti</button>
+                    <button ngbDropdownItem (click)='seeData(11)'>Mitch Held</button>
+                    <button ngbDropdownItem (click)='seeData(12)'>Ellie Gorham</button>
+                    <button ngbDropdownItem (click)='seeData(13)'>Brody Kitchell</button>
+                    <button ngbDropdownItem (click)='seeData(14)'>Katie Graham</button>
+                    <button ngbDropdownItem (click)='seeData(14)'>Katie Graham</button>
+                </div>
+            </div>
+            <div>
+                <ul *ngFor='let employee of employees'>
+                    <li>ID: {{employee.id}}</li>
+                    <li>Name: {{employee.name}}</li>
+                    <li>Start Time: {{employee.start_time}}</li>
+                    <li>End Time: {{employee.end_time}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

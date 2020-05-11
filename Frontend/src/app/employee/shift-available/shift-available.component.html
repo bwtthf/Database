@@ -3,9 +3,25 @@
     <div class="row mt-5">
         <div class="col-12">
             <div ngbDropdown class="d-inline-block">
-                <button [routerLink]="['/shiftmonth']">Shifts for the past month of employee</button>
-                <button [routerLink]="['/employeearchive']">Check if an applicant worked here before</button>
-                <button [routerLink]="['/shiftavailable']">Check whos available to take over somesone shift that day</button>
+                <div>
+                    <label>Enter the date: year/month/day</label>
+                </div>
+                <div>
+                    <textarea></textarea>
+                </div>
+                <button class="btn btn-secondary" id="dropdownBasic1" ngbDropdownToggle>Employees: </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem (click)='seeData(1)'>Cook</button>
+                    <button ngbDropdownItem (click)='seeData(2)'>Waiter</button>
+                    <button ngbDropdownItem (click)='seeData(3)'>Bartender</button>
+                    <button ngbDropdownItem (click)='seeData(4)'>Manager</button>
+                </div>
+            </div>
+            <div>
+                <ul *ngFor='let employee of employees'>
+                    <li>ID: {{employee.id}}</li>
+                    <li>Name: {{employee.name}}</li>
+                </ul>
             </div>
         </div>
     </div>

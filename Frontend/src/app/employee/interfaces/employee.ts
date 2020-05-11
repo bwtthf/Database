@@ -6,3 +6,8 @@ export interface Ishift {
     start_time: string
     end_time: string
 }
+
+export interface IshiftAvailable {
+    id: number
+    name: string
+}
