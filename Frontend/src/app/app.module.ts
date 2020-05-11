@@ -9,9 +9,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
-import {
-  NgbPaginationModule, NgbDropdownModule, NgbAlertModule, NgbModalModule, NgbDatepickerModule
-} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { environment } from '../environments/environment';
 
@@ -28,6 +26,7 @@ import { ShiftMonthComponent } from './employee/shift-month/shift-month.componen
 import { EmployeeHomeComponent } from './employee/employee-home/employee-home.component';
 import { ShiftAvailableComponent } from './employee/shift-available/shift-available.component';
 import { EmployeeArchiveComponent } from './employee/employee-archive/employee-archive.component';
+import { NonPerishablesQueryFormComponent } from './inventory/components/non-perishables-query-form/non-perishables-query-form.component';
 
 
 
@@ -47,6 +46,7 @@ import { EmployeeArchiveComponent } from './employee/employee-archive/employee-a
     EmployeeHomeComponent,
     ShiftAvailableComponent,
     EmployeeArchiveComponent,
+    NonPerishablesQueryFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,11 +57,7 @@ import { EmployeeArchiveComponent } from './employee/employee-archive/employee-a
     AngularFireModule.initializeApp( environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    NgbPaginationModule, 
-    NgbDropdownModule, 
-    NgbAlertModule,
-    NgbModalModule,
-    NgbDatepickerModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

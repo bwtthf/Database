@@ -11,7 +11,8 @@ router.get('/getAllPerishableItems', (req, res, next) => {
                 to_char(I.date_received, 'YYYY-MM-DD') AS date_received, \
                 P.item, P.quantity, \
                 to_char(P.expiration_date, 'YYYY-MM-DD') AS expiration_date \
-                FROM Perishables P LEFT JOIN Inventory I ON P.item_id=I.item_id;"
+                FROM Perishables P LEFT JOIN Inventory I ON P.item_id=I.item_id \
+                ORDER BY P.item_id DESC;"
 
     db.raw(sql_str)
         .then((results) => {

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbPanelChangeEvent, NgbAccordion } from '@ng-bootstrap/ng-bootstrap';
 
 import { AuthService } from '../../auth/auth.service';
 import { NonPerishablesService } from '../services/non-perishables.service';
+
 import { NonPerishablesModalComponent } from '../components/non-perishables-modal/non-perishables-modal.component';
 
 @Component({
@@ -13,7 +14,12 @@ import { NonPerishablesModalComponent } from '../components/non-perishables-moda
 })
 export class NonPerishablesComponent implements OnInit {
 
+  @ViewChild('non_perishables_accordion', { static: true }) accordion: NgbAccordion;
+
   user: firebase.User;
+
+  panelID: any;
+  panelEventNextState: any;
 
   nonPerishablesItem: any;
 
@@ -31,7 +37,13 @@ export class NonPerishablesComponent implements OnInit {
         if (this.user === undefined || this.user === null) {
           this.router.navigate(['/login']);
         }
-      })
+      });
+    this.nonPerishablesService.sendAdvanceQueryRequest$.subscribe((data) => {
+      if (this.panelEventNextState === true) {
+        this.accordion.toggle(this.panelID);
+      }
+      this.nonPerishablesItems = data;
+    });
   }
 
   ngOnInit() {
@@ -42,6 +54,10 @@ export class NonPerishablesComponent implements OnInit {
   }
 
   addRow() {
+    if (this.panelEventNextState === true) {
+      this.accordion.toggle(this.panelID);
+    }
+
     this.nonPerishablesItem = {
       "item_id": '',
       "total_price": '',
@@ -78,6 +94,10 @@ export class NonPerishablesComponent implements OnInit {
   }
 
   editRow(item_id: any) {
+    if (this.panelEventNextState === true) {
+      this.accordion.toggle(this.panelID);
+    }
+
     this.nonPerishablesItem = {
       "item_id": item_id,
       "total_price": '',
@@ -91,25 +111,25 @@ export class NonPerishablesComponent implements OnInit {
 
       this.nonPerishablesItem.item_id = data[0].item_id;
       this.nonPerishablesItem.total_price = data[0].total_price;
-      if(data[0].date_ordered){
+      if (data[0].date_ordered) {
         this.nonPerishablesItem.date_ordered = {
           "year": parseInt(data[0].date_ordered.split('-')[0]),
           "month": parseInt(data[0].date_ordered.split('-')[1]),
           "day": parseInt(data[0].date_ordered.split('-')[2]),
         };
-      } else{
+      } else {
         this.nonPerishablesItem.date_ordered = ''
       }
-      if(data[0].date_received){
+      if (data[0].date_received) {
         this.nonPerishablesItem.date_received = {
           "year": parseInt(data[0].date_received.split('-')[0]),
           "month": parseInt(data[0].date_received.split('-')[1]),
           "day": parseInt(data[0].date_received.split('-')[2]),
         };
-      } else{
+      } else {
         this.nonPerishablesItem.date_received = ''
       }
-      
+
       this.nonPerishablesItem.item = data[0].item;
       this.nonPerishablesItem.condition = data[0].condition;
 
@@ -134,7 +154,6 @@ export class NonPerishablesComponent implements OnInit {
             this.nonPerishablesItem.item = '';
             this.nonPerishablesItem.condition = '';
 
-            // console.log(this.nonPerishablesItem);
             this.nonPerishablesService.getAllNonPerishableItems().subscribe((data: any[]) => {
               // console.log(data);
               this.nonPerishablesItems = data;
@@ -148,6 +167,10 @@ export class NonPerishablesComponent implements OnInit {
   }
 
   deleteRow(item_id: any) {
+    if (this.panelEventNextState === true) {
+      this.accordion.toggle(this.panelID);
+    }
+
     this.nonPerishablesItem = {
       "item_id": item_id,
       "total_price": '',
@@ -170,6 +193,12 @@ export class NonPerishablesComponent implements OnInit {
         this.nonPerishablesItems = data;
       })
     });
+  }
+
+  detectPanelChange($event: NgbPanelChangeEvent) {
+    // console.log($event);
+    this.panelID = $event.panelId;
+    this.panelEventNextState = $event.nextState;
   }
 
 }
