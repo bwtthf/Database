@@ -9,9 +9,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
-import {
-  NgbPaginationModule, NgbDropdownModule, NgbAlertModule, NgbModalModule, NgbDatepickerModule
-} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { environment } from '../environments/environment';
 
@@ -52,11 +50,7 @@ import { EmployeeHomeComponent } from './employee/employee-home/employee-home.co
     AngularFireModule.initializeApp( environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    NgbPaginationModule, 
-    NgbDropdownModule, 
-    NgbAlertModule,
-    NgbModalModule,
-    NgbDatepickerModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
