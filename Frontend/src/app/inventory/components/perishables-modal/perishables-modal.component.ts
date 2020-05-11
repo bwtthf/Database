@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-perishables-modal',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerishablesModalComponent implements OnInit {
 
-  constructor() { }
+  @Input() public perishablesItem;
+  @Output() passEntry: EventEmitter<any> = new EventEmitter();
+
+  constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit() {
+  }
+
+  submitForm() {
+    this.passEntry.emit(this.perishablesItem);
+    this.activeModal.close(this.perishablesItem);
   }
 
 }

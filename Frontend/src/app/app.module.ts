@@ -56,7 +56,10 @@ import { NonPerishablesModalComponent } from './inventory/components/non-perisha
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ NonPerishablesModalComponent ]
+  entryComponents: [
+    NonPerishablesModalComponent, 
+    PerishablesModalComponent
+  ]
 })
 
 export class AppModule { }

@@ -13,25 +13,25 @@ export class NonPerishablesService {
   constructor(private httpClient: HttpClient) { }
 
   public getAllNonPerishableItems() {
-    // return this.httpClient.get('/inventory/getAllNonPerishableItems');
-    // return this.httpClient.get(this.REST_API_SERVER + '/inventory/getAllNonPerishableItems');
-    return this.httpClient.get(environment.apiUrl + '/inventory/getAllNonPerishableItems');
+    // return this.httpClient.get('/inventory_non_perishables/getAllNonPerishableItems');
+    // return this.httpClient.get(this.REST_API_SERVER + '/inventory_non_perishables/getAllNonPerishableItems');
+    return this.httpClient.get(environment.apiUrl + '/inventory_non_perishables/getAllNonPerishableItems');
   }
 
   public getOneNonPerishableItem(nonPerishablesItem){
-    return this.httpClient.post(environment.apiUrl + '/inventory/getOneNonPerishableItem', nonPerishablesItem);
+    return this.httpClient.post(environment.apiUrl + '/inventory_non_perishables/getOneNonPerishableItem', nonPerishablesItem);
   }
 
   public postOneNonPerishableItem(nonPerishablesItem) {
-    return this.httpClient.post(environment.apiUrl + '/inventory/postOneNonPerishableItem', nonPerishablesItem);
+    return this.httpClient.post(environment.apiUrl + '/inventory_non_perishables/postOneNonPerishableItem', nonPerishablesItem);
   }
 
   public deleteOneNonPerishableItem(nonPerishablesItem){
-    return this.httpClient.post(environment.apiUrl + '/inventory/deleteOneNonPerishableItem', nonPerishablesItem);
+    return this.httpClient.post(environment.apiUrl + '/inventory_non_perishables/deleteOneNonPerishableItem', nonPerishablesItem);
   }
 
   public updateOneNonPerishableItem(nonPerishablesItem){
-    return this.httpClient.post(environment.apiUrl + '/inventory/updateOneNonPerishableItem', nonPerishablesItem);
+    return this.httpClient.post(environment.apiUrl + '/inventory_non_perishables/updateOneNonPerishableItem', nonPerishablesItem);
   }
 
 }

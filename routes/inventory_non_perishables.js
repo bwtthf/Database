@@ -3,26 +3,46 @@ const db = require('../db')
 
 const router = express.Router();
 
-router.post('/deleteOneNonPerishableItem', (req, res, next) => {
-    // console.log(req);
-    item_id = req.body.item_id;
 
-    db.raw("DELETE FROM non_perishables WHERE item_id = ?;", [item_id])
+router.get('/getAllNonPerishableItems', (req, res, next) => {
+
+    sql_str = "SELECT Np.item_id, I.total_price, \
+                to_char(I.date_ordered, 'YYYY-MM-DD') AS date_ordered, \
+                to_char(I.date_received, 'YYYY-MM-DD') AS date_received, \
+                Np.item, Np.condition \
+                FROM Non_perishables Np LEFT JOIN Inventory I ON Np.item_id=I.item_id;"
+
+    db.raw(sql_str)
         .then((results) => {
+            // console.log(results.rows);
+            res.json(results.rows);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+});
 
-            db.raw("DELETE FROM Inventory WHERE item_id = ?;", [item_id])
-                .then((results) => {
-                    res.json(results);
-                }).catch((error) => {
-                    console.log(error);
-                    res.json({});
-                });
 
-        }).catch((error) => {
+router.post('/getOneNonPerishableItem', (req, res, next) => {
+    // console.log(req.body);
+    sql_str = "SELECT I.item_id, I.total_price, \
+                to_char(I.date_ordered, 'YYYY-MM-DD') AS date_ordered, \
+                to_char(I.date_received, 'YYYY-MM-DD') AS date_received, \
+                Np.item, Np.condition \
+                FROM Inventory I LEFT JOIN Non_perishables Np ON I.item_id=Np.item_id \
+                WHERE I.item_id=?;"
+    
+    db.raw(sql_str, [req.body.item_id])
+        .then((results) => {
+            // console.log(results.rows);
+            res.json(results.rows);
+        })
+        .catch((error) => {
             console.log(error);
             res.json({});
         });
 });
+
 
 router.post('/postOneNonPerishableItem', (req, res, next) => {
     // console.log(req);
@@ -64,43 +84,28 @@ router.post('/postOneNonPerishableItem', (req, res, next) => {
     }
 });
 
-router.post('/getOneNonPerishableItem', (req, res, next) => {
-    // console.log(req.body);
-    sql_str = "SELECT I.item_id, I.total_price, \
-                to_char(I.date_ordered, 'YYYY-MM-DD') AS date_ordered, \
-                to_char(I.date_received, 'YYYY-MM-DD') AS date_received, \
-                Np.item, Np.condition \
-                FROM Inventory I LEFT JOIN Non_perishables Np ON I.item_id=Np.item_id \
-                WHERE I.item_id=?;"
-    
-    db.raw(sql_str, [req.body.item_id])
+
+router.post('/deleteOneNonPerishableItem', (req, res, next) => {
+    // console.log(req);
+    item_id = req.body.item_id;
+
+    db.raw("DELETE FROM non_perishables WHERE item_id = ?;", [item_id])
         .then((results) => {
-            // console.log(results.rows);
-            res.json(results.rows);
-        })
-        .catch((error) => {
+
+            db.raw("DELETE FROM Inventory WHERE item_id = ?;", [item_id])
+                .then((results) => {
+                    res.json(results);
+                }).catch((error) => {
+                    console.log(error);
+                    res.json({});
+                });
+
+        }).catch((error) => {
             console.log(error);
             res.json({});
         });
 });
 
-router.get('/getAllNonPerishableItems', (req, res, next) => {
-
-    sql_str = "SELECT I.item_id, I.total_price, \
-                to_char(I.date_ordered, 'YYYY-MM-DD') AS date_ordered, \
-                to_char(I.date_received, 'YYYY-MM-DD') AS date_received, \
-                Np.item, Np.condition \
-                FROM Inventory I LEFT JOIN Non_perishables Np ON I.item_id=Np.item_id;"
-
-    db.raw(sql_str)
-        .then((results) => {
-            // console.log(results.rows);
-            res.json(results.rows);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-});
 
 router.post('/updateOneNonPerishableItem', (req, res, next) => {
     // console.log(req);

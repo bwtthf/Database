@@ -5,7 +5,8 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 
 const db = require('./db')
-const inventory = require('./routes/inventory');
+const inventory_non_perishables = require('./routes/inventory_non_perishables');
+const inventory_perishables = require('./routes/inventory_perishables');
 
 // We need to use environment variables
 // This setup dotenv with the configuration file
@@ -20,7 +21,8 @@ app.use(bodyParser.json());
 var distDir = __dirname + "/public/";
 app.use(express.static(distDir));
 
-app.use('/inventory', inventory);
+app.use('/inventory_non_perishables', inventory_non_perishables);
+app.use('/inventory_perishables', inventory_perishables);
 
 // Test database connection use only
 // db.raw('SELECT * FROM Employee;')

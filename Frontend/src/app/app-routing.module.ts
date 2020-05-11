@@ -28,11 +28,11 @@ const routes: Routes = [
     component: DashboardComponent
   },
   {
-    path: 'inventory_np',
+    path: 'inventory_non_perishables',
     component: NonPerishablesComponent
   },
   {
-    path: 'inventory_p',
+    path: 'inventory_perishables',
     component: PerishablesComponent
   },
 
