@@ -1,1 +1,12 @@
-<p>employee-archive works!</p>
+<app-navbar></app-navbar>
+<div class="container pt-5">
+    <div class="row mt-5">
+        <div class="col-12">
+            <div ngbDropdown class="d-inline-block">
+                <button [routerLink]="['/shiftmonth']">Shifts for the past month of employee</button>
+                <button [routerLink]="['/employeearchive']">Check if an applicant worked here before</button>
+                <button [routerLink]="['/shiftavailable']">Check whos available to take over somesone shift that day</button>
+            </div>
+        </div>
+    </div>
+</div>

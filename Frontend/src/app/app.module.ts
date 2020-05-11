@@ -26,11 +26,9 @@ import { PerishablesModalComponent } from './inventory/components/perishables-mo
 import { NonPerishablesModalComponent } from './inventory/components/non-perishables-modal/non-perishables-modal.component';
 import { ShiftMonthComponent } from './employee/shift-month/shift-month.component';
 import { EmployeeHomeComponent } from './employee/employee-home/employee-home.component';
-<<<<<<< HEAD
 import { ShiftAvailableComponent } from './employee/shift-available/shift-available.component';
 import { EmployeeArchiveComponent } from './employee/employee-archive/employee-archive.component';
-=======
->>>>>>> 4994324b9a9d9ed2513d866306dec38ba47fe9a3
+
 
 
 @NgModule({
@@ -47,11 +45,8 @@ import { EmployeeArchiveComponent } from './employee/employee-archive/employee-a
     NonPerishablesModalComponent,
     ShiftMonthComponent,
     EmployeeHomeComponent,
-<<<<<<< HEAD
     ShiftAvailableComponent,
     EmployeeArchiveComponent,
-=======
->>>>>>> 4994324b9a9d9ed2513d866306dec38ba47fe9a3
   ],
   imports: [
     BrowserModule,
