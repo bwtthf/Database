@@ -14,6 +14,7 @@ import { ShiftAvailableComponent } from './employee/shift-available/shift-availa
 import { NonPerishablesComponent } from './inventory/non-perishables/non-perishables.component';
 import { PerishablesComponent } from './inventory/perishables/perishables.component';
 import { InventoryAnalyticsComponent } from './inventory/inventory-analytics/inventory-analytics.component';
+import { FoodMenuComponent } from './menu/food-menu/food-menu.component';
 
 const routes: Routes = [
   {
@@ -59,6 +60,10 @@ const routes: Routes = [
   {
     path: 'employeearchive',
     component: EmployeeArchiveComponent
+  },
+  {
+    path: 'foodmenu',
+    component: FoodMenuComponent
   },
   {
     path: '',

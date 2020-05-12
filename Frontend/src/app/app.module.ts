@@ -31,6 +31,7 @@ import { NonPerishablesQueryFormComponent } from './inventory/components/non-per
 import { PerishablesQueryFormComponent } from './inventory/components/perishables-query-form/perishables-query-form.component';
 import { InventoryAnalyticsComponent } from './inventory/inventory-analytics/inventory-analytics.component';
 import { InventoryAnalyticsQueryFormComponent } from './inventory/components/inventory-analytics-query-form/inventory-analytics-query-form.component';
+import { FoodMenuComponent } from './menu/food-menu/food-menu.component';
 
 
 
@@ -54,6 +55,7 @@ import { InventoryAnalyticsQueryFormComponent } from './inventory/components/inv
     PerishablesQueryFormComponent,
     InventoryAnalyticsComponent,
     InventoryAnalyticsQueryFormComponent,
+    FoodMenuComponent,
   ],
   imports: [
     BrowserModule,
