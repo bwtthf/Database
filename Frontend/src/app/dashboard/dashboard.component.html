@@ -6,6 +6,7 @@
             <div ngbDropdown class="d-inline-block">
                 <button class="btn btn-secondary" id="dropdownBasic1" ngbDropdownToggle>Inventory</button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem [routerLink]="['/inventory_analytics']">Inventory Analytics</button>
                     <button ngbDropdownItem [routerLink]="['/inventory_non_perishables']">Non-perishable</button>
                     <button ngbDropdownItem [routerLink]="['/inventory_perishables']">Perishable</button>
                 </div>

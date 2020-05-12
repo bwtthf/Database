@@ -29,6 +29,8 @@ import { ShiftAvailableComponent } from './employee/shift-available/shift-availa
 import { EmployeeArchiveComponent } from './employee/employee-archive/employee-archive.component';
 import { NonPerishablesQueryFormComponent } from './inventory/components/non-perishables-query-form/non-perishables-query-form.component';
 import { PerishablesQueryFormComponent } from './inventory/components/perishables-query-form/perishables-query-form.component';
+import { InventoryAnalyticsComponent } from './inventory/inventory-analytics/inventory-analytics.component';
+import { InventoryAnalyticsQueryFormComponent } from './inventory/components/inventory-analytics-query-form/inventory-analytics-query-form.component';
 
 
 
@@ -50,6 +52,8 @@ import { PerishablesQueryFormComponent } from './inventory/components/perishable
     EmployeeArchiveComponent,
     NonPerishablesQueryFormComponent,
     PerishablesQueryFormComponent,
+    InventoryAnalyticsComponent,
+    InventoryAnalyticsQueryFormComponent,
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 
 const db = require('./db')
+const inventory_analytics = require('./routes/inventory_analytics');
 const inventory_non_perishables = require('./routes/inventory_non_perishables');
 const inventory_perishables = require('./routes/inventory_perishables');
 const employee = require('./routes/employee');
@@ -22,6 +23,7 @@ app.use(bodyParser.json());
 var distDir = __dirname + "/public/";
 app.use(express.static(distDir));
 
+app.use('/inventory_analytics', inventory_analytics);
 app.use('/inventory_non_perishables', inventory_non_perishables);
 app.use('/inventory_perishables', inventory_perishables);
 app.use('/employee', employee);

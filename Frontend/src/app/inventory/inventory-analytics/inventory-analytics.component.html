@@ -1,0 +1,44 @@
+<app-navbar></app-navbar>
+<div class="container pt-5">
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2>Inventory Analytics</h2>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-12">
+            <ngb-accordion #inventory_analytics_accordion="ngbAccordion" [closeOthers]="true"
+                (panelChange)="detectPanelChange($event)">
+                <ngb-panel id="toggle-1" title="Advance Query">
+                    <ng-template ngbPanelContent>
+                        <app-inventory-analytics-query-form></app-inventory-analytics-query-form>
+                    </ng-template>
+                </ngb-panel>
+            </ngb-accordion>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-12 d-flex justify-content-center">
+            <highcharts-chart [Highcharts]="total_expenses_chart" [options]="total_expenses_chart_options">
+            </highcharts-chart>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-12 d-flex justify-content-center">
+            <highcharts-chart [Highcharts]="non_perishables_expenses_chart"
+                [options]="non_perishables_expenses_chart_options"></highcharts-chart>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-12 d-flex justify-content-center">
+            <highcharts-chart [Highcharts]="perishables_expenses_chart" [options]="perishables_expenses_chart_options">
+            </highcharts-chart>
+        </div>
+    </div>
+
+</div>

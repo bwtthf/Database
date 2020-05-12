@@ -13,11 +13,12 @@ import { ShiftAvailableComponent } from './employee/shift-available/shift-availa
 
 import { NonPerishablesComponent } from './inventory/non-perishables/non-perishables.component';
 import { PerishablesComponent } from './inventory/perishables/perishables.component';
+import { InventoryAnalyticsComponent } from './inventory/inventory-analytics/inventory-analytics.component';
 
 const routes: Routes = [
   {
     path: 'login',
-    component: LoginComponent  
+    component: LoginComponent
   },
   {
     path: 'register',
@@ -39,10 +40,14 @@ const routes: Routes = [
     path: 'inventory_perishables',
     component: PerishablesComponent
   },
-   {
-     path: 'employee',
-     component: EmployeeHomeComponent
-   },
+  {
+    path: 'inventory_analytics',
+    component: InventoryAnalyticsComponent
+  },
+  {
+    path: 'employee',
+    component: EmployeeHomeComponent
+  },
   {
     path: 'shiftmonth',
     component: ShiftMonthComponent
