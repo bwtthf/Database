@@ -5,7 +5,6 @@ import * as Highcharts from 'highcharts';
 
 import { AuthService } from '../../auth/auth.service';
 import { InventoryAnalyticsService } from '../services/inventory-analytics.service';
-import { element } from 'protractor';
 
 @Component({
   selector: 'app-inventory-analytics',
