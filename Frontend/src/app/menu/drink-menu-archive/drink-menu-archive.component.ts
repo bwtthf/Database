@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DrinkMenuArchiveComponent implements OnInit {
 
+  drink: any;
+
+  drinks = [];
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  deleteRow(drink_id){
   }
 
 }

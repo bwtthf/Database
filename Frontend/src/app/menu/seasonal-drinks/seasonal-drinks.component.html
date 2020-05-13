@@ -28,16 +28,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let nonPerishablesItem of nonPerishablesItems; index as i">
+                    <tr *ngFor="let drink of drinks; index as i">
                         <th scope="row">{{ i + 1 }}</th>
-                        <td>{{ nonPerishablesItem.drink_name }}</td>
-                        <td>{{ nonPerishablesItem.drink_category }}</td>
-                        <td>{{ nonPerishablesItem.drink_price }}</td>
-                        <td>{{ nonPerishablesItem.alchoholic }}</td>
-                        <td>{{ nonPerishablesItem.date_added }}</td>
-                        <td>{{ nonPerishablesItem.date_active_start }}</td>
-                        <td>{{ nonPerishablesItem.date_active_end }}</td>
-                        <!-- <td><button type="button" class="btn btn-warning" (click)="editRow(nonPerishablesItem.item_id)">
+                        <td>{{ drink.drink_name }}</td>
+                        <td>{{ drink.drink_category }}</td>
+                        <td>{{ drink.drink_price }}</td>
+                        <td>{{ drink.alchoholic }}</td>
+                        <td>{{ drink.date_added }}</td>
+                        <td>{{ drink.date_active_start }}</td>
+                        <td>{{ drink.date_active_end }}</td>
+                        <!-- <td><button type="button" class="btn btn-warning" (click)="editRow(drink.drink_id)">
                                 <svg class="bi bi-pencil" width="1em" height="1em" viewBox="0 0 16 16"
                                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"
@@ -51,7 +51,7 @@
                         </td> -->
                         <td>
                             <button type="button" class="btn btn-danger"
-                                (click)="deleteRow(nonPerishablesItem.item_id)">
+                                (click)="deleteRow(drink.drink_id)">
                                 <svg class="bi bi-trash" width="1em" height="1em" viewBox="0 0 16 16"
                                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path
