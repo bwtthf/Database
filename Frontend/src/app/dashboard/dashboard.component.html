@@ -4,18 +4,30 @@
 
         <div class="col-2 d-flex align-content-center flex-wrap">
             <div ngbDropdown class="d-inline-block">
+                <button class="btn btn-secondary" id="dropdownBasic1" ngbDropdownToggle>Menu</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem [routerLink]="['/foodmenu']">Food Menu</button>
+                    <button ngbDropdownItem [routerLink]="['/drinkmenu']">Drink Menu</button>
+                    <button ngbDropdownItem [routerLink]="['/seasonaldrinks']">Seasonal Drinks</button>
+                    <button ngbDropdownItem [routerLink]="['/drinkmenuarchive']">Drink Menu Archive</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-2 d-flex align-content-center flex-wrap">
+            <div ngbDropdown class="d-inline-block">
                 <button class="btn btn-secondary" id="dropdownBasic1" ngbDropdownToggle>Inventory</button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                     <button ngbDropdownItem [routerLink]="['/inventory_analytics']">Inventory Analytics</button>
-                    <button ngbDropdownItem [routerLink]="['/inventory_non_perishables']">Non-perishable</button>
-                    <button ngbDropdownItem [routerLink]="['/inventory_perishables']">Perishable</button>
+                    <button ngbDropdownItem [routerLink]="['/inventory_non_perishables']">Non-perishable Items</button>
+                    <button ngbDropdownItem [routerLink]="['/inventory_perishables']">Perishable Items</button>
                 </div>
             </div>
         </div>
 
         <div class="col-2 d-flex align-content-center flex-wrap">
             <div class="d-inline-block">
-                <button class="btn btn-secondary" [routerLink]="['/employee']">Employee Information</button>
+                <button class="btn btn-secondary" [routerLink]="['/employee']">Employee</button>
             </div>
         </div>
 

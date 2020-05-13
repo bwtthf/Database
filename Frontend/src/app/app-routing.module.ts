@@ -14,7 +14,11 @@ import { ShiftAvailableComponent } from './employee/shift-available/shift-availa
 import { NonPerishablesComponent } from './inventory/non-perishables/non-perishables.component';
 import { PerishablesComponent } from './inventory/perishables/perishables.component';
 import { InventoryAnalyticsComponent } from './inventory/inventory-analytics/inventory-analytics.component';
+
 import { FoodMenuComponent } from './menu/food-menu/food-menu.component';
+import { DrinkMenuComponent } from './menu/drink-menu/drink-menu.component';
+import { DrinkMenuArchiveComponent } from './menu/drink-menu-archive/drink-menu-archive.component';
+import { SeasonalDrinksComponent } from './menu/seasonal-drinks/seasonal-drinks.component';
 
 const routes: Routes = [
   {
@@ -64,6 +68,18 @@ const routes: Routes = [
   {
     path: 'foodmenu',
     component: FoodMenuComponent
+  },
+  {
+    path: 'drinkmenu',
+    component: DrinkMenuComponent
+  },
+  {
+    path: 'drinkmenuarchive',
+    component: DrinkMenuArchiveComponent
+  },
+  {
+    path: 'seasonaldrinks',
+    component: SeasonalDrinksComponent
   },
   {
     path: '',

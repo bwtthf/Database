@@ -32,6 +32,9 @@ import { PerishablesQueryFormComponent } from './inventory/components/perishable
 import { InventoryAnalyticsComponent } from './inventory/inventory-analytics/inventory-analytics.component';
 import { InventoryAnalyticsQueryFormComponent } from './inventory/components/inventory-analytics-query-form/inventory-analytics-query-form.component';
 import { FoodMenuComponent } from './menu/food-menu/food-menu.component';
+import { DrinkMenuComponent } from './menu/drink-menu/drink-menu.component';
+import { DrinkMenuArchiveComponent } from './menu/drink-menu-archive/drink-menu-archive.component';
+import { SeasonalDrinksComponent } from './menu/seasonal-drinks/seasonal-drinks.component';
 
 
 
@@ -56,6 +59,9 @@ import { FoodMenuComponent } from './menu/food-menu/food-menu.component';
     InventoryAnalyticsComponent,
     InventoryAnalyticsQueryFormComponent,
     FoodMenuComponent,
+    DrinkMenuComponent,
+    DrinkMenuArchiveComponent,
+    SeasonalDrinksComponent,
   ],
   imports: [
     BrowserModule,
