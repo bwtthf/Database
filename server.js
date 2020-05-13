@@ -11,6 +11,8 @@ const inventory_perishables = require('./routes/inventory_perishables');
 const employee = require('./routes/employee');
 const foodmenu = require('./routes/food_menu');
 const drink_menu = require('./routes/drink_menu');
+const seasonal_drinks = require('./routes/seasonal_drinks');
+const drink_menu_archive = require('./routes/drink_menu_archive');
 const add_or_edit_drink_menu = require('./routes/add_or_edit_drink_menu');
 
 // We need to use environment variables
@@ -32,6 +34,8 @@ app.use('/inventory_perishables', inventory_perishables);
 app.use('/employee', employee);
 app.use('/foodmenu',foodmenu);
 app.use('/drink_menu', drink_menu);
+app.use('/seasonal_drinks', seasonal_drinks);
+app.use('/drink_menu_archive', drink_menu_archive);
 app.use('/add_or_edit_drink_menu', add_or_edit_drink_menu);
 
 // Test database connection use only
