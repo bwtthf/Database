@@ -18,4 +18,8 @@ export class AddOrEditDrinkMenuService {
     return this.httpClient.post(environment.apiUrl + '/add_or_edit_drink_menu/addOrUpdateItemToDrinkMenu', drinkMenuItemInfo);
   }
 
+  public getDrinkByDrinkId(drink_id){
+    return this.httpClient.post(environment.apiUrl + '/add_or_edit_drink_menu/getDrinkByDrinkId', drink_id);;
+  }
+
 }

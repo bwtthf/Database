@@ -55,18 +55,30 @@ export class AddOrEditDrinkMenuComponent implements OnInit {
       data.forEach((element) => {
         this.categories.push(element.drink_category);
       });
-      this.addOrEditDrinkMenuForm.controls['drink_category'].setValue('', { onlySelf: true });
-      this.addOrEditDrinkMenuForm.controls['alcoholic'].setValue('', { onlySelf: true });
+      this.addOrEditDrinkMenuForm.controls['drink_category'].setValue('');
+      this.addOrEditDrinkMenuForm.controls['alcoholic'].setValue('');
     });
     this.route.params.subscribe((params) => {
       this.drink_id = params.drink_id;
+      if (this.drink_id != null && this.drink_id != undefined && this.drink_id != '') {
+        this.addOrEditDrinkMenuService.getDrinkByDrinkId({ "drink_id": this.drink_id }).subscribe((data) => {
+          // console.log(data);
+          this.addOrEditDrinkMenuForm.controls['drink_name'].setValue(data[0].drink_name);
+          this.addOrEditDrinkMenuForm.controls['drink_category'].setValue(data[0].drink_category);
+          this.addOrEditDrinkMenuForm.controls['drink_price'].setValue(data[0].drink_price);
+          this.addOrEditDrinkMenuForm.controls['date_active_start'].setValue(data[0].date_active_start);
+          this.addOrEditDrinkMenuForm.controls['date_active_end'].setValue(data[0].date_active_end);
+          this.addOrEditDrinkMenuForm.controls['alcoholic'].setValue((data[0].alcoholic === false) ? 'False' : 'True');
+        });
+      }
     });
   }
 
   onSubmit(drinkMenuItemInfo) {
-    if(this.drink_id != null && this.drink_id != undefined && this.drink_id != ''){
+    if (this.drink_id != null && this.drink_id != undefined && this.drink_id != '') {
       drinkMenuItemInfo.drink_id = this.drink_id;
     }
+    // console.log(drinkMenuItemInfo);
     this.addOrEditDrinkMenuService.addOrUpdateItemToDrinkMenu(drinkMenuItemInfo).subscribe((data) => {
       // console.log(data);
     });

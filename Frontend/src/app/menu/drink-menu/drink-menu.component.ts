@@ -30,16 +30,21 @@ export class DrinkMenuComponent implements OnInit {
           this.router.navigate(['/login']);
         }
       });
-    this.drinkMenuService.getAllDrinks().subscribe((data: any[]) => {
-      // console.log(data);
-      this.drinks = data;
-    });
+    // this.drinkMenuService.getAllDrinks().subscribe((data: any[]) => {
+    //   this.drinks = data;
+    // });
   }
 
   ngOnInit() {
     this.drinkMenuService.getAllDrinks().subscribe((data: any[]) => {
       // console.log(data);
       this.drinks = data;
+    });
+    this.router.events.subscribe((event) => {
+      this.drinkMenuService.getAllDrinks().subscribe((data: any[]) => {
+        // console.log(data);
+        this.drinks = data;
+      });
     });
   }
 
@@ -52,7 +57,7 @@ export class DrinkMenuComponent implements OnInit {
   }
 
   deleteRow(drink_id) {
-    this.drinkMenuService.deleteDrink({"drink_id": drink_id}).subscribe((data) => {
+    this.drinkMenuService.deleteDrink({ "drink_id": drink_id }).subscribe((data) => {
       this.drinkMenuService.getAllDrinks().subscribe((data: any[]) => {
         // console.log(data);
         this.drinks = data;
