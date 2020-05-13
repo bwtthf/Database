@@ -19,10 +19,10 @@
                         <th scope="col">Drink Name</th>
                         <th scope="col">Drink Category</th>
                         <th scope="col">Drink Price</th>
-                        <th scope="col">Is Seasonal</th>
-                        <th scope="col">Alchoholic</th>
+                        <th scope="col">Seasonal</th>
+                        <th scope="col">Alcoholic</th>
                         <th scope="col">Date Added</th>
-                        <!-- <th scope="col"></th> -->
+                        <th scope="col"></th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -33,9 +33,9 @@
                         <td>{{ drink.drink_category }}</td>
                         <td>{{ drink.drink_price }}</td>
                         <td>{{ drink.is_seasonal }}</td>
-                        <td>{{ drink.alchoholic }}</td>
+                        <td>{{ drink.alcoholic }}</td>
                         <td>{{ drink.date_added }}</td>
-                        <!-- <td><button type="button" class="btn btn-warning" (click)="editRow(drink.drink_id)">
+                        <td><button type="button" class="btn btn-warning" (click)="editRow(drink.drink_id)">
                                 <svg class="bi bi-pencil" width="1em" height="1em" viewBox="0 0 16 16"
                                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"
@@ -46,7 +46,7 @@
                                         clip-rule="evenodd" />
                                 </svg>
                             </button>
-                        </td> -->
+                        </td>
                         <td>
                             <button type="button" class="btn btn-danger"
                                 (click)="deleteRow(drink.drink_id)">

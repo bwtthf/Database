@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { LoginComponent } from './auth/login/login.component';
@@ -19,6 +19,7 @@ import { FoodMenuComponent } from './menu/food-menu/food-menu.component';
 import { DrinkMenuComponent } from './menu/drink-menu/drink-menu.component';
 import { DrinkMenuArchiveComponent } from './menu/drink-menu-archive/drink-menu-archive.component';
 import { SeasonalDrinksComponent } from './menu/seasonal-drinks/seasonal-drinks.component';
+import { AddOrEditDrinkMenuComponent } from './menu/components/add-or-edit-drink-menu/add-or-edit-drink-menu.component';
 
 const routes: Routes = [
   {
@@ -70,16 +71,24 @@ const routes: Routes = [
     component: FoodMenuComponent
   },
   {
-    path: 'drinkmenu',
+    path: 'drink_menu',
     component: DrinkMenuComponent
   },
   {
-    path: 'drinkmenuarchive',
+    path: 'drink_menu_archive',
     component: DrinkMenuArchiveComponent
   },
   {
-    path: 'seasonaldrinks',
+    path: 'seasonal_drinks',
     component: SeasonalDrinksComponent
+  },
+  {
+    path: 'add_or_edit_drink_menu',
+    component: AddOrEditDrinkMenuComponent
+  },
+  {
+    path: 'add_or_edit_drink_menu/:drink_id',
+    component: AddOrEditDrinkMenuComponent
   },
   {
     path: '',

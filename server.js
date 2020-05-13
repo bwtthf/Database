@@ -10,6 +10,8 @@ const inventory_non_perishables = require('./routes/inventory_non_perishables');
 const inventory_perishables = require('./routes/inventory_perishables');
 const employee = require('./routes/employee');
 const foodmenu = require('./routes/food_menu');
+const drink_menu = require('./routes/drink_menu');
+const add_or_edit_drink_menu = require('./routes/add_or_edit_drink_menu');
 
 // We need to use environment variables
 // This setup dotenv with the configuration file
@@ -29,6 +31,8 @@ app.use('/inventory_non_perishables', inventory_non_perishables);
 app.use('/inventory_perishables', inventory_perishables);
 app.use('/employee', employee);
 app.use('/foodmenu',foodmenu);
+app.use('/drink_menu', drink_menu);
+app.use('/add_or_edit_drink_menu', add_or_edit_drink_menu);
 
 // Test database connection use only
 // db.raw('SELECT * FROM Employee;')

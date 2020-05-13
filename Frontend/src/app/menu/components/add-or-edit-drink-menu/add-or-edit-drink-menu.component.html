@@ -1,0 +1,66 @@
+<app-navbar></app-navbar>
+<div class="container pt-5">
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2>Add/Edit Drink Menu</h2>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-12">
+            <form [formGroup]="addOrEditDrinkMenuForm" (ngSubmit)="onSubmit(addOrEditDrinkMenuForm.value)">
+                <div class="form-group">
+                    <label for="drink_name">Drink name</label>
+                    <div class="input-group">
+                        <input id="drink_name" name="drink_name" type="text" class="form-control"
+                            formControlName="drink_name">
+                    </div>
+
+                    <label for="drink_category" class="pt-2">Drink Category</label>
+                    <div class="input-group">
+                        <select id="drink_category" name="drink_category" class="form-control"
+                            formControlName="drink_category">
+                            <option value="" disabled>Choose category</option>
+                            <option *ngFor="let category of categories" [ngValue]="category">{{category}}</option>
+                        </select>
+                    </div>
+
+                    <label for="drink_price" class="pt-2">Drink price</label>
+                    <div class="input-group">
+                        <input id="drink_price" name="drink_price" type="number" class="form-control"
+                            formControlName="drink_price">
+                    </div>
+
+                    <label for="date_active_start" class="pt-2">Date active start</label>
+                    <div class="input-group">
+                        <input id="date_active_start" class="form-control" placeholder="yyyy-mm-dd"
+                            name="date_active_start" formControlName="date_active_start">
+                    </div>
+
+                    <label for="date_active_end" class="pt-2">Date active end</label>
+                    <div class="input-group">
+                        <input id="date_active_end" class="form-control" placeholder="yyyy-mm-dd" name="date_active_end"
+                            formControlName="date_active_end">
+                    </div>
+
+                    <label for="alcoholic" class="pt-2">Alcoholic</label>
+                    <div class="input-group">
+                        <select id="alcoholic" name="alcoholic" class="form-control" formControlName="alcoholic">
+                            <option value="" disabled>Choose alcoholic</option>
+                            <option *ngFor="let alcoholic_tf of alcoholic_true_false" [ngValue]="alcoholic_tf">
+                                {{alcoholic_tf}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center mt-5">
+                    <button class="btn btn-secondary mr-5" (click)="cancel($event)">Cancel</button>
+                    <button class="btn btn-success ml-5" type="submit">Submit</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
