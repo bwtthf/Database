@@ -31,5 +31,17 @@
             </div>
         </div>
 
+        <div class="col-2 d-flex align-content-center flex-wrap">
+            <div ngbDropdown class="d-inline-block">
+                <button class="btn btn-secondary" id="dropdownBasic1" ngbDropdownToggle>Sales</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem [routerLink]="['/salse']">Sales</button>
+                    <button ngbDropdownItem [routerLink]="['/food_sales']">Food Sales</button>
+                    <button ngbDropdownItem [routerLink]="['/drink_sales']">Drink Sales</button>
+                    <button ngbDropdownItem [routerLink]="['/hourly_sales']">Hourly Sales</button>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
