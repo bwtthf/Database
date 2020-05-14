@@ -45,15 +45,20 @@ export class SalesComponent implements OnInit {
     });
   }
 
-  addRow(){
-
+  addRow() {
+    this.router.navigateByUrl('add_or_edit_sales');
   }
 
-  editRow(receipt_id){
-
+  editRow(sales_id) {
+    this.router.navigate(['add_or_edit_sales', sales_id]);
   }
 
-  deleteRow(receipt_id){
-
+  deleteRow(sales_id) {
+    this.salesService.deleteSales({ "sales_id": sales_id }).subscribe((data) => {
+      this.salesService.getAllSales().subscribe((data: any[]) => {
+        // console.log(data);
+        this.sales = data;
+      });
+    });
   }
 }

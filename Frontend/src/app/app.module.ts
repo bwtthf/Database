@@ -40,7 +40,10 @@ import { AddOrEditFoodMenuComponent } from './menu/components/add-or-edit-food-m
 
 
 import { SalesComponent } from './sales/sales/sales.component';
-
+import { AddOrEditSalesComponent } from './sales/components/add-or-edit-sales/add-or-edit-sales.component';
+import { Food_SalesComponent } from './sales/food_sales/food_sales.component';
+import { Drink_SalesComponent } from './sales/drink_sales/drink_sales.component';
+import { Hourly_SalesComponent } from './sales/hourly_sales/hourly_sales.component';
 
 
 @NgModule({
@@ -72,6 +75,10 @@ import { SalesComponent } from './sales/sales/sales.component';
     AddOrEditFoodMenuComponent,
 
     SalesComponent,
+    AddOrEditSalesComponent,
+    Food_SalesComponent,
+    Drink_SalesComponent,
+    Hourly_SalesComponent,
 
   ],
   imports: [

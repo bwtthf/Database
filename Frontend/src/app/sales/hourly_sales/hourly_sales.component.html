@@ -1,0 +1,80 @@
+<app-navbar></app-navbar>
+<div class="container pt-5">
+
+    <div class="row mt-4">
+        <div class="col-29">
+            <h2>Hourly_Sales</h2>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-30">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">date</th>
+                        <th scope="col">sales_00</th>
+                        <th scope="col">sales_01</th>
+                        <th scope="col">sales_02</th>
+                        <th scope="col">sales_03</th>
+                        <th scope="col">sales_04</th>
+                        <th scope="col">sales_05</th>
+                        <th scope="col">sales_06</th>
+                        <th scope="col">sales_07</th>
+                        <th scope="col">sales_08</th>
+                        <th scope="col">sales_09</th>
+                        <th scope="col">sales_10</th>
+                        <th scope="col">sales_11</th>
+                        <th scope="col">sales_12</th>
+                        <th scope="col">sales_13</th>
+                        <th scope="col">sales_14</th>
+                        <th scope="col">sales_15</th>
+                        <th scope="col">sales_16</th>
+                        <th scope="col">sales_17</th>
+                        <th scope="col">sales_18</th>
+                        <th scope="col">sales_19</th>
+                        <th scope="col">sales_20</th>
+                        <th scope="col">sales_21</th>
+                        <th scope="col">sales_22</th>
+                        <th scope="col">sales_23</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let hourly_sale of hourly_sales; index as i">
+                        <td>{{ hourly_sale.id }}</td>
+                        <td>{{ hourly_sale.date }}</td>
+                        <td>{{ hourly_sale.sales_00 }}</td>
+                        <td>{{ hourly_sale.sales_01 }}</td>
+                        <td>{{ hourly_sale.sales_02 }}</td>
+                        <td>{{ hourly_sale.sales_03 }}</td>
+                        <td>{{ hourly_sale.sales_04 }}</td>
+                        <td>{{ hourly_sale.sales_05 }}</td>
+                        <td>{{ hourly_sale.sales_06 }}</td>
+                        <td>{{ hourly_sale.sales_07 }}</td>
+                        <td>{{ hourly_sale.sales_08 }}</td>
+                        <td>{{ hourly_sale.sales_09 }}</td>
+                        <td>{{ hourly_sale.sales_10 }}</td>
+                        <td>{{ hourly_sale.sales_11 }}</td>
+                        <td>{{ hourly_sale.sales_12 }}</td>
+                        <td>{{ hourly_sale.sales_13 }}</td>
+                        <td>{{ hourly_sale.sales_14 }}</td>
+                        <td>{{ hourly_sale.sales_15 }}</td>
+                        <td>{{ hourly_sale.sales_16 }}</td>
+                        <td>{{ hourly_sale.sales_17 }}</td>
+                        <td>{{ hourly_sale.sales_18 }}</td>
+                        <td>{{ hourly_sale.sales_19 }}</td>
+                        <td>{{ hourly_sale.sales_20 }}</td>
+                        <td>{{ hourly_sale.sales_21 }}</td>
+                        <td>{{ hourly_sale.sales_22 }}</td>
+                        <td>{{ hourly_sale.sales_23 }}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

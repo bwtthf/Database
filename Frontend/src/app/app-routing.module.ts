@@ -24,6 +24,12 @@ import { AddOrEditDrinkMenuComponent } from './menu/components/add-or-edit-drink
 import { SalesComponent } from './sales/sales/sales.component';
 import { AddOrEditFoodMenuComponent } from './menu/components/add-or-edit-food-menu/add-or-edit-food-menu.component';
 
+import { AddOrEditSalesComponent } from './sales/components/add-or-edit-sales/add-or-edit-sales.component';
+import { Food_SalesComponent } from './sales/food_sales/food_sales.component';
+import { Drink_SalesComponent } from './sales/drink_sales/drink_sales.component';
+import { Hourly_SalesComponent } from './sales/hourly_sales/hourly_sales.component';
+
+
 const routes: Routes = [
   {
     path: 'login',
@@ -100,6 +106,26 @@ const routes: Routes = [
   {
     path: 'sales',
     component: SalesComponent
+  },
+  {
+    path: 'add_or_edit_sales',
+    component: AddOrEditSalesComponent
+  },
+  {
+    path: 'add_or_edit_sales/:sales_id',
+    component: AddOrEditSalesComponent
+  },
+  {
+    path: 'food_sales',
+    component: Food_SalesComponent
+  },
+  {
+    path: 'drink_sales',
+    component: Drink_SalesComponent
+  },
+  {
+    path: 'hourly_sales',
+    component: Hourly_SalesComponent
   },
   {
     path: '',
