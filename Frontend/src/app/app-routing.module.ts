@@ -22,6 +22,7 @@ import { SeasonalDrinksComponent } from './menu/seasonal-drinks/seasonal-drinks.
 import { AddOrEditDrinkMenuComponent } from './menu/components/add-or-edit-drink-menu/add-or-edit-drink-menu.component';
 
 import { SalesComponent } from './sales/sales/sales.component';
+import { AddOrEditFoodMenuComponent } from './menu/components/add-or-edit-food-menu/add-or-edit-food-menu.component';
 
 const routes: Routes = [
   {
@@ -71,6 +72,10 @@ const routes: Routes = [
   {
     path: 'foodmenu',
     component: FoodMenuComponent
+  },
+  {
+    path: 'addoreditfoodmenu',
+    component: AddOrEditFoodMenuComponent
   },
   {
     path: 'drink_menu',

@@ -85,29 +85,40 @@ router.get('/topThreeFoodCategories', (req, res, next) => {
 });
 
 router.get('/topThreeFoodTimePeriod', (req, res, next) => {
-    sql_str = "### NOT SURE HOW TO TYPE QUERY"
+    sql_str = "SELECT food_name, food_category, sum(quantity) \
+    FROM Food_sales as FS, Food_menu as FM, Sales as S \
+    WHERE FS.food_id = FM.food_id AND S.Receipt_id = FS.Receipt_id AND S.Date BETWEEN '2019-01-01' AND '2019-12-31' \
+    GROUP BY food_name, food_category, quantity \
+    ORDER BY quantity DESC \
+    LIMIT 3;"
 
-    db.raw(sql_str, [req.body.item_id])
+    db.raw(sql_str)
         .then((results) => {
+            console.log(results.rows);
             res.json(results.rows);
         })
         .catch((error) => {
             console.log(error);
-            res.json({});
-        })
+        });
 });
 
 router.get('/bestSellerForHoliday', (req, res, next) => {
-    sql_str = "### NOT SURE HOW TO TYPE QUERY"
+    sql_str = "SELECT food_name, food_category, sum(quantity) \
+    FROM Food_sales AS FS, Food_menu AS FM, Sales AS S \
+    WHERE FS.food_id = FM.food_id AND S.Receipt_id = FS.Receipt_id AND S.time_stamp \
+    BETWEEN '2019-12-31 17:00:00' AND '2019-12-31 23:00:00' \
+    GROUP BY food_name, food_category, quantity \
+    ORDER BY quantity DESC \
+    LIMIT 1;"
 
-    db.raw(sql_str, [req.body.item_id])
+    db.raw(sql_str)
         .then((results) => {
+            console.log(results.rows);
             res.json(results.rows);
         })
         .catch((error) => {
             console.log(error);
-            res.json({});
-        })
+        });
 });
 
 

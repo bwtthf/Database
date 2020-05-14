@@ -16,9 +16,9 @@ export class FoodMenuComponent implements OnInit {
   user: firebase.User;
 
   food: any;
-
+  timeframe: any;
   foods = [];
-
+  
   panelID: any;
   panelEventNextState: any;
 
@@ -46,35 +46,20 @@ export class FoodMenuComponent implements OnInit {
         this.foods = data;
       });
     });
+    
   }
 
   //fix this function -> refer to addOrEdit drinks
-  getTopThreeTimePeriod() {
-    const modalRef = this.modalService.open(AddOrEditFoodMenuComponent);
-    modalRef.result.then((result) => {
-      if (result) {
-        this.foodMenuService.getTopThreeTimePeriod()
-          .subscribe((data) => {
-            this.foodMenuService.getAllFoods().subscribe((data: any[]) => {
-              this.foods = data;
-            })
-          })
-      }
-    })
-  }
-
-  getBestSellerTimePeriod() {
-    const modalRef = this.modalService.open(AddOrEditFoodMenuComponent);
-    modalRef.result.then((result) => {
-      if (result) {
-        this.foodMenuService.getBestSellerForHoliday()
-          .subscribe((data) => {
-            this.foodMenuService.getAllFoods().subscribe((data: any[]) => {
-              this.foods = data;
-            })
-          })
-      }
-    })
+  
+  viewMenu() {
+    this.foodMenuService.getAllFoods().subscribe((data: any[]) => {
+      this.foods = data;
+    });
+    this.router.events.subscribe((event) => {
+      this.foodMenuService.getAllFoods().subscribe((data: any[]) => {
+        this.foods = data;
+      });
+    });
   }
 
   deleteRow(food_id) {
@@ -107,11 +92,14 @@ export class FoodMenuComponent implements OnInit {
     this.foodMenuService.getTopThreeTimePeriod().subscribe((data: any[]) => {
       this.foods = data;
     })
+
+
   }
 
   bestSellerForHoliday() {
     this.foodMenuService.getBestSellerForHoliday().subscribe((data: any[]) => {
       this.foods = data;
     })
+
   }
 }

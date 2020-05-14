@@ -1,56 +1,47 @@
-<div class="modal-header">
-  <h4 class="modal-title" id="modal-basic-title">Enter time frame</h4>
-  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
 
-<div class="modal-body">
+<p>working</p>
+<app-navbar></app-navbar>
+<div class="container pt-5">
 
-  <form>
-    <label for="first_date" class="pt-3">First Date</label>
-    <div class="input-group">
-      <input [(ngModel)]="timeframe.first_date" id="first_date" class="form-control"
-             placeholder="yyyy-mm-dd" name="dp_first_date" ngbDatepicker #dp_first_date="ngbDatepicker">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary calendar" (click)="dp_first_date.toggle()" type="button">
-          <svg class="bi bi-calendar" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
-               xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd"
-                  d="M14 0H2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V2a2 2 0 00-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"
-                  clip-rule="evenodd" />
-            <path fill-rule="evenodd"
-                  d="M6.5 7a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm-9 3a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm-9 3a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2z"
-                  clip-rule="evenodd" />
-          </svg>
-        </button>
-      </div>
+  <div class="row mt-4">
+    <div class="col-12">
+      <h2>Add/Edit Food Menu</h2>
     </div>
+  </div>
 
-    <label for="second_date" class="pt-3">Second Date</label>
-    <div class="input-group">
-      <input [(ngModel)]="timeframe.second_date" id="second_date" class="form-control"
-             placeholder="yyyy-mm-dd" name="dp_date_ordered" ngbDatepicker #dp_date_ordered="ngbDatepicker">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary calendar" (click)="dp_second_date.toggle()" type="button">
-          <svg class="bi bi-calendar" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
-               xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd"
-                  d="M14 0H2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V2a2 2 0 00-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"
-                  clip-rule="evenodd" />
-            <path fill-rule="evenodd"
-                  d="M6.5 7a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm-9 3a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm-9 3a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2z"
-                  clip-rule="evenodd" />
-          </svg>
-        </button>
-      </div>
+  <div class="row mt-3">
+    <div class="col-12">
+      <form [formGroup]="addOrEditFoodMenuForm" (ngSubmit)="onSubmit(addOrEditFoodMenuForm.value)">
+        <div class="form-group">
+          
+          <label for="date_active_start" class="pt-2">First Date</label>
+          <div class="input-group">
+            <input id="date_active_start" class="form-control" placeholder="yyyy-mm-dd"
+                   name="date_active_start" formControlName="date_active_start">
+          </div>
+
+          <label for="date_active_end" class="pt-2">Second Date</label>
+          <div class="input-group">
+            <input id="date_active_end" class="form-control" placeholder="yyyy-mm-dd" name="date_active_end"
+                   formControlName="date_active_end">
+          </div>
+
+         
+        </div>
+
+        <div class="d-flex justify-content-center mt-5">
+          <button class="btn btn-secondary mr-5" (click)="cancel($event)">Cancel</button>
+          <button class="btn btn-success ml-5" type="submit">Submit</button>
+        </div>
+
+      </form>
     </div>
-  </form>
-</div>
-
-<div>
-  <div class="modal-footer">
-    <button class="btn btn-outline-dark" type="submit" (click)="submitForm()">Submit</button>
   </div>
 
 </div>
+
+
+
+
+
+
