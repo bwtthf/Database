@@ -19,13 +19,11 @@
                     <button ngbDropdownItem (click)='seeData(12)'>Ellie Gorham</button>
                     <button ngbDropdownItem (click)='seeData(13)'>Brody Kitchell</button>
                     <button ngbDropdownItem (click)='seeData(14)'>Katie Graham</button>
-                    <button ngbDropdownItem (click)='seeData(14)'>Katie Graham</button>
                 </div>
             </div>
             <div>
-                <ul *ngFor='let employee of employees'>
-                    <li>ID: {{employee.id}}</li>
-                    <li>Name: {{employee.name}}</li>
+                <ul *ngFor='let employee of employees' class='list'>
+                    <li class='name'>ID: {{employee.id}}                           Name: {{employee.name}}</li>
                     <li>Start Time: {{employee.start_time}}</li>
                     <li>End Time: {{employee.end_time}}</li>
                 </ul>

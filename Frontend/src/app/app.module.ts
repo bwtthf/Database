@@ -39,6 +39,9 @@ import { AddOrEditDrinkMenuComponent } from './menu/components/add-or-edit-drink
 import { AddOrEditFoodMenuComponent } from './menu/components/add-or-edit-food-menu/add-or-edit-food-menu.component';
 
 
+import { SalesComponent } from './sales/sales/sales.component';
+
+
 
 @NgModule({
   declarations: [
@@ -65,7 +68,11 @@ import { AddOrEditFoodMenuComponent } from './menu/components/add-or-edit-food-m
     DrinkMenuArchiveComponent,
     SeasonalDrinksComponent,
     AddOrEditDrinkMenuComponent,
+
     AddOrEditFoodMenuComponent,
+
+    SalesComponent,
+
   ],
   imports: [
     BrowserModule,

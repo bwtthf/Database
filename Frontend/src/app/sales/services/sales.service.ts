@@ -6,12 +6,12 @@ import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class SeasonalDrinksService {
+export class SalesService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getAllSeasonalDrinks(){
-    return this.httpClient.get(environment.apiUrl + '/seasonal_drinks/getAllSeasonalDrinks')
+  public getAllSales() {
+    return this.httpClient.get(environment.apiUrl + '/sales/getAllSales');
   }
 
 }

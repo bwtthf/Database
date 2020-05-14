@@ -21,6 +21,8 @@ import { DrinkMenuArchiveComponent } from './menu/drink-menu-archive/drink-menu-
 import { SeasonalDrinksComponent } from './menu/seasonal-drinks/seasonal-drinks.component';
 import { AddOrEditDrinkMenuComponent } from './menu/components/add-or-edit-drink-menu/add-or-edit-drink-menu.component';
 
+import { SalesComponent } from './sales/sales/sales.component';
+
 const routes: Routes = [
   {
     path: 'login',
@@ -89,6 +91,10 @@ const routes: Routes = [
   {
     path: 'add_or_edit_drink_menu/:drink_id',
     component: AddOrEditDrinkMenuComponent
+  },
+  {
+    path: 'sales',
+    component: SalesComponent
   },
   {
     path: '',
