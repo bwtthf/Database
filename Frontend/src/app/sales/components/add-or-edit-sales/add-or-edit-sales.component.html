@@ -1,0 +1,49 @@
+<app-navbar></app-navbar>
+<div class="container pt-5">
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2>Add/Edit Sales</h2>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-12">
+            <form [formGroup]="addOrEditSalesForm" (ngSubmit)="onSubmit(addOrEditSalesForm.value)">
+                <div class="form-group">
+                    <label for="receipt_id">receipt_id</label>
+                    <div class="input-group">
+                        <input id="receipt_id" name="receipt_id" type="text" class="form-control"
+                            formControlName="receipt_id">
+                    </div>
+
+                    <label for="employee_id">employee_id</label>
+                    <div class="input-group">
+                        <input id="employee_id" name="employee_id" type="text" class="form-control"
+                            formControlName="employee_id">
+                    </div>
+
+                    <label for="time_stamp" class="pt-2">time_stamp</label>
+                    <div class="input-group">
+                        <input id="time_stamp" class="form-control" placeholder="yyyy-mm-dd"
+                            name="time_stamp" formControlName="time_stamp">
+                    </div>
+
+                    <label for="total_sales" class="pt-2">total_sales</label>
+                    <div class="input-group">
+                        <input id="total_sales" name="total_sales" type="number" class="form-control"
+                            formControlName="total_sales">
+                    </div>
+
+                </div>
+
+                <div class="d-flex justify-content-center mt-5">
+                    <button class="btn btn-secondary mr-5" (click)="cancel($event)">Cancel</button>
+                    <button class="btn btn-success ml-5" type="submit">Submit</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
