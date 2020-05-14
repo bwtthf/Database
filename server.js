@@ -14,6 +14,7 @@ const drink_menu = require('./routes/drink_menu');
 const seasonal_drinks = require('./routes/seasonal_drinks');
 const drink_menu_archive = require('./routes/drink_menu_archive');
 const add_or_edit_drink_menu = require('./routes/add_or_edit_drink_menu');
+const sales = require('./routes/sales');
 
 // We need to use environment variables
 // This setup dotenv with the configuration file
@@ -37,6 +38,7 @@ app.use('/drink_menu', drink_menu);
 app.use('/seasonal_drinks', seasonal_drinks);
 app.use('/drink_menu_archive', drink_menu_archive);
 app.use('/add_or_edit_drink_menu', add_or_edit_drink_menu);
+app.use('/sales', sales);
 
 // Test database connection use only
 // db.raw('SELECT * FROM Employee;')
