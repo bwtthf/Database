@@ -45,4 +45,15 @@ export class SalesComponent implements OnInit {
     });
   }
 
+  addRow(){
+
+  }
+
+  editRow(receipt_id){
+
+  }
+
+  deleteRow(receipt_id){
+
+  }
 }
