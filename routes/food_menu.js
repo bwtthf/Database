@@ -91,7 +91,7 @@ router.get('/topThreeFoodTimePeriod', (req, res, next) => {
         .then((results) => {
             res.json(results.rows);
         })
-        .catcj((error) => {
+        .catch((error) => {
             console.log(error);
             res.json({});
         })
@@ -104,7 +104,7 @@ router.get('/bestSellerForHoliday', (req, res, next) => {
         .then((results) => {
             res.json(results.rows);
         })
-        .catcj((error) => {
+        .catch((error) => {
             console.log(error);
             res.json({});
         })
