@@ -36,6 +36,7 @@ import { DrinkMenuComponent } from './menu/drink-menu/drink-menu.component';
 import { DrinkMenuArchiveComponent } from './menu/drink-menu-archive/drink-menu-archive.component';
 import { SeasonalDrinksComponent } from './menu/seasonal-drinks/seasonal-drinks.component';
 import { AddOrEditDrinkMenuComponent } from './menu/components/add-or-edit-drink-menu/add-or-edit-drink-menu.component';
+import { AddOrEditFoodMenuComponent } from './menu/components/add-or-edit-food-menu/add-or-edit-food-menu.component';
 
 
 
@@ -64,6 +65,7 @@ import { AddOrEditDrinkMenuComponent } from './menu/components/add-or-edit-drink
     DrinkMenuArchiveComponent,
     SeasonalDrinksComponent,
     AddOrEditDrinkMenuComponent,
+    AddOrEditFoodMenuComponent,
   ],
   imports: [
     BrowserModule,

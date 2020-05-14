@@ -42,13 +42,12 @@
                 </div>
             </div>
 
-            <label for="date_received" class="pt-3">Date received</label>
+            <label for="date_ordered" class="pt-3">Date ordered</label>
             <div class="input-group">
-                <input [(ngModel)]="perishablesItem.date_received" id="date_received" class="form-control"
-                    placeholder="yyyy-mm-dd" name="dp_date_received" ngbDatepicker #dp_date_received="ngbDatepicker">
+                <input [(ngModel)]="perishablesItem.date_ordered" id="date_ordered" class="form-control"
+                    placeholder="yyyy-mm-dd" name="dp_date_ordered" ngbDatepicker #dp_date_ordered="ngbDatepicker">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary calendar" (click)="dp_date_received.toggle()"
-                        type="button">
+                    <button class="btn btn-outline-secondary calendar" (click)="dp_date_ordered.toggle()" type="button">
                         <svg class="bi bi-calendar" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
