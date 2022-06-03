@@ -23,7 +23,7 @@
     "@angular/common": "~8.2.7",
     "@angular/compiler": "~8.2.7",
     "@angular/compiler-cli": "~8.2.7",
-    "@angular/core": "~8.2.7",
+    "@angular/core": "~11.0.5",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.4.1",
     "cors": "^2.8.5",
